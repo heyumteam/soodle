@@ -1,6 +1,10 @@
 {
 	"image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-bullseye",
 
+	"settings": {
+		"svelte.enable-ts-plugin": true
+	},
+
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"svelte.svelte-vscode"
