@@ -5,10 +5,7 @@
 		"svelte.enable-ts-plugin": true
 	},
 
-	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"svelte.svelte-vscode"
-	],
+	"extensions": ["dbaeumer.vscode-eslint", "svelte.svelte-vscode"],
 
 	"remoteUser": "node"
 }
