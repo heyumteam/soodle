@@ -12,7 +12,7 @@
 
 <section>
 	<h1>
-		Welcome to your new<br />SvelteKit app
+		Welcome to your new<br />Soodle, 수들!
 	</h1>
 
 	<h2>
