@@ -1,11 +1,6 @@
 {
 	"image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-bullseye",
 
-	"settings": {
-		"editor.formatOnSave": true
-	},
-
-
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"svelte.svelte-vscode"
