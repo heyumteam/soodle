@@ -1,10 +1,11 @@
 {
-    "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-bullseye",
+	"image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-bullseye",
 
-    "extensions": [
-        "dbaeumer.vscode-eslint",
-        "svelte.svelte-vscode"
-    ],
+	"settings": {
+		"svelte.enable-ts-plugin": true
+	},
 
-    "remoteUser": "node"
+	"extensions": ["dbaeumer.vscode-eslint", "svelte.svelte-vscode"],
+
+	"remoteUser": "node"
 }
