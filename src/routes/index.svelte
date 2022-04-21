@@ -12,11 +12,11 @@
 
 <section>
 	<h1>
-		Welcome to your new<br />수들, Soodle!
+		Hello 수들, Soodle!
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
+		This page will become soodle app.
 	</h2>
 
 	<Counter />
