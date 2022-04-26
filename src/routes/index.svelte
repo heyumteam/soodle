@@ -7,7 +7,6 @@
 </svelte:head>
 
 <section>
-	<div class="margin" />
 	<Grid />
 </section>
 
@@ -17,10 +16,6 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 1;
-	}
-
-	div.margin {
-		height: 6em;
+		margin-top: 2em;
 	}
 </style>
