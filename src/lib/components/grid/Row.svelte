@@ -1,5 +1,5 @@
 <script>
-	import { WORD_LENGTH } from '../config';
+	import { WORD_LENGTH } from '$lib/config';
 	import Cell from './Cell.svelte';
 
 	const emptyTiles = new Array(WORD_LENGTH).fill(undefined);
