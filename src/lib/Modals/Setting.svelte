@@ -1,8 +1,9 @@
 <script>
-    import { spring } from 'svelte/motion';
-    import IoMdSettings from 'svelte-icons/io/IoMdSettings.svelte';
+	import Settings from 'carbon-icons-svelte/lib/Settings.svelte';
 </script>
 
 <button>
-    <IoMdSettings />
+	<Settings />
 </button>
+
+<style src="./modal.css"></style>

@@ -1,8 +1,9 @@
 <script>
-    import { spring } from 'svelte/motion';
-    import IoMdStats from 'svelte-icons/io/IoMdStats.svelte';
+	import ChartLine from 'carbon-icons-svelte/lib/ChartLine.svelte';
 </script>
 
 <button>
-    <IoMdStats />
+	<ChartLine />
 </button>
+
+<style src="./modal.css"></style>
