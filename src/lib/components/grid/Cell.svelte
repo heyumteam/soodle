@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { CharStatus } from './char';
+	import type { CellStatus } from './cellStatus';
 
-	let status: CharStatus | undefined = undefined;
+	let status: CellStatus | undefined = undefined;
 	let char: string | undefined = undefined;
 </script>
 
