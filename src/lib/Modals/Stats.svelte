@@ -2,8 +2,8 @@
 	import ChartLine from 'carbon-icons-svelte/lib/ChartLine.svelte';
 </script>
 
-<button>
-	<ChartLine />
+<button class="modal">
+	<ChartLine class="icon" />
 </button>
 
 <style src="./modal.css"></style>
