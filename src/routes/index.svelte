@@ -1,9 +1,5 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
-	import InputField from '$lib/InputField.svelte';
+	import Grid from '$lib/components/Grid.svelte';
 </script>
 
 <svelte:head>
@@ -11,9 +7,8 @@
 </svelte:head>
 
 <section>
-	<InputField />
-	<InputField />
-	<InputField />
+	<div class='margin' />
+	<Grid />
 </section>
 
 <style>
@@ -23,5 +18,9 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
+	}
+
+	div.margin {
+		height: 8em;
 	}
 </style>
