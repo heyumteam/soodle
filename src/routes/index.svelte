@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	import InputField from '$lib/InputField.svelte';
 </script>
 
 <svelte:head>
@@ -11,15 +11,9 @@
 </svelte:head>
 
 <section>
-	<h1>
-		Hello 수들, Soodle!
-	</h1>
-
-	<h2>
-		This page will become soodle app.
-	</h2>
-
-	<Counter />
+	<InputField />
+	<InputField />
+	<InputField />
 </section>
 
 <style>
@@ -29,9 +23,5 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
 	}
 </style>

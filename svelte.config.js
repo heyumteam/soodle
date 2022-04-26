@@ -9,10 +9,14 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-
 		// Override http methods in the Todo forms
 		methodOverride: {
 			allowed: ['PATCH', 'DELETE']
+		},
+		vite: {
+			define: {
+				__version__: JSON.stringify(process.env.npm_package_version)
+			}
 		}
 	}
 };
