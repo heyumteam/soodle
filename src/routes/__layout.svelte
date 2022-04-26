@@ -11,3 +11,11 @@
 </main>
 
 <Footer />
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+</style>

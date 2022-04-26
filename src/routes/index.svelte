@@ -16,8 +16,9 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		margin-top: 2em;
+		flex-grow: 1;
 	}
 </style>
