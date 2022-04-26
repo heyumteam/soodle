@@ -1,8 +1,9 @@
 <script lang="ts">
 	import type { CellStatus } from './cellStatus';
+	import type { Chars } from '../keyboard/chars';
 
 	let status: CellStatus | undefined = undefined;
-	let char: string | undefined = undefined;
+	let char: Chars | undefined = undefined;
 </script>
 
 <div class="cell">
