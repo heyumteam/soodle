@@ -7,7 +7,7 @@
 </svelte:head>
 
 <section>
-	<div class='margin' />
+	<div class="margin" />
 	<Grid />
 </section>
 
@@ -21,6 +21,6 @@
 	}
 
 	div.margin {
-		height: 8em;
+		height: 6em;
 	}
 </style>
