@@ -1,15 +1,12 @@
-/* @import '@fontsource/fira-mono'; */
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
 
 :root {
-	font-family: NanumGothic;
-	--font-mono: 'Fira Mono', monospace;
-	--pure-white: #ffffff;
-	--background-color: #ffffff;
+	font-family: 'Nanum Gothic';
+	--background-color: #fffff9;
 	--less-important-color: #5f5f5f;
-	--accent-color: #ff3e00;
-	--heading-color: rgba(0, 0, 0, 0.7);
 	--text-color: #000000;
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
+}
+
+body {
+	background-color: var(--background-color);
 }
