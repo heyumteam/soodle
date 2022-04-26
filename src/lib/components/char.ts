@@ -1,4 +1,1 @@
-export type CharStatus = 
-    | 'correct'
-    | 'exist'
-    | 'absent';
+export type CharStatus = 'correct' | 'exist' | 'absent';
