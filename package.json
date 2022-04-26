@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.0",
 		"@lukeed/uuid": "^2.0.0",
-		"cookie": "^0.4.1",
-		"svelte-icons": "^2.1.0"
+		"carbon-icons-svelte": "^11.0.1",
+		"cookie": "^0.4.1"
 	}
 }
