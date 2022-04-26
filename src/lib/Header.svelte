@@ -28,7 +28,7 @@
 	}
 
 	h1 {
-		font-size: x-large;
+		font-size: xx-large;
 	}
 
 	h1 > a {

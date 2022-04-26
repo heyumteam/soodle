@@ -1,12 +1,11 @@
 button.modal {
 	background-color: var(--background-color);
 	padding: 0em;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
+	margin: 0 0.5em;
 	border: 0;
 }
 
 button :global(.icon) {
-	width: 1.7em;
-	height: 1.7em;
+	width: 2.5em;
+	height: 2.5em;
 }
