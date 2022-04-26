@@ -1,12 +1,13 @@
 <script>
+    import { GITHUB_ADDRESS } from '$lib/config';
 	//@ts-ignore ; __version__ is defined in `svelte.config.js`
-	const clientVersion = __version__;
+	const versionString = __version__;
 </script>
 
 <footer>
 	<section>
-		<a href="https://github.com/heyumteam/soodle">github.com/heyumteam/soodle</a>
-		v{clientVersion}
+		<a href="https://{GITHUB_ADDRESS}">{GITHUB_ADDRESS}</a>
+		v{versionString}
 	</section>
 </footer>
 
