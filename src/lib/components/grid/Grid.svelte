@@ -2,7 +2,7 @@
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
 
-	const emptyTiles = Array.from(Array(MAX_TRIAL));
+	const emptyTiles = new Array(MAX_TRIAL).fill(undefined);
 </script>
 
 <div>
