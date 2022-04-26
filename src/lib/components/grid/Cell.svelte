@@ -6,25 +6,20 @@
 </script>
 
 <div class="cell">
-	<div class="character">
-		{char ?? ''}
-	</div>
+	{char ?? ''}
 </div>
 
 <style>
 	div.cell {
 		display: flex;
-		border: 0.15em solid grey;
-		width: 3.4em;
-		height: 3.4em;
+		font-size: x-large;
+		font-weight: 700;
+		border: 0.1em solid grey;
+		width: 2.6em;
+		height: 2.6em;
 		justify-content: center;
 		align-items: center;
 		border-radius: 10%;
 		margin: 0.2em;
-	}
-
-	div.character {
-		font-size: x-large;
-		font-weight: 700;
 	}
 </style>
