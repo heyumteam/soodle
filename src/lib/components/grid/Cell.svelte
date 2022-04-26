@@ -15,11 +15,11 @@
 		font-size: x-large;
 		font-weight: 700;
 		border: 0.1em solid grey;
-		width: 2.6em;
-		height: 2.6em;
+		width: 2.2em;
+		height: 2.2em;
 		justify-content: center;
 		align-items: center;
 		border-radius: 10%;
-		margin: 0.2em;
+		margin: 0.15em;
 	}
 </style>
