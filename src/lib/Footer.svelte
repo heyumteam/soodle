@@ -14,11 +14,9 @@
 <style>
 	footer {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
-		align-items: center;
-		padding: 40px;
 		color: var(--less-important-color);
+		padding: 2em 0;
 	}
 
 	a {
@@ -28,11 +26,5 @@
 
 	a:hover {
 		text-decoration: underline;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

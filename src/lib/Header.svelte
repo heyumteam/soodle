@@ -5,24 +5,29 @@
 </script>
 
 <header>
-	<h1>{GAME_TITLE}</h1>
-	<div class="modals">
-		<Stats />
-		<Setting />
+	<div class='header'>
+		<h1>{GAME_TITLE}</h1>
+		<div class="modals">
+			<Stats />
+			<Setting />
+		</div>
 	</div>
 </header>
 
 <style>
+	header {
+		display: flex;
+		justify-content: center;
+	}
+
+	div.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width:30em;
+	}
+
 	h1 {
 		font-size: x-large;
-		display: flex;
-	}
-	h1,
-	div.modals {
-		display: inline;
-		vertical-align: middle;
-	}
-	div.modals {
-		float: right;
 	}
 </style>
