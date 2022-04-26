@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Grid from '$lib/components/grid/Grid.svelte';
+	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
 </script>
 
 <svelte:head>
@@ -8,6 +9,7 @@
 
 <section>
 	<Grid />
+	<Keyboard />
 </section>
 
 <style>
