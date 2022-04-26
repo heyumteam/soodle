@@ -1,5 +1,5 @@
 <script>
-    import { GITHUB_ADDRESS } from '$lib/config';
+	import { GITHUB_ADDRESS } from '$lib/config';
 	//@ts-ignore ; __version__ is defined in `svelte.config.js`
 	const versionString = __version__;
 </script>
