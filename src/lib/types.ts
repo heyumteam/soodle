@@ -36,22 +36,22 @@ export type KeyStatus = 'correct' | 'exist' | 'absent' | 'unknown';
 
 // guess
 export type Guess = {
-    guess: Chars[];
-    statuses: CellStatus[];
-}
+	guess: Chars[];
+	statuses: CellStatus[];
+};
 
 // game
 export type GameResult = 'win' | 'lose' | undefined;
 
 export type GameStatus = {
-    guesses: Guess[];
-    result: GameResult;
-}
+	guesses: Guess[];
+	result: GameResult;
+};
 
 export type GameStats = {
-    played: number;
-    winCount: number;
-    currentWinningStreak: number;
-    maxWinningStreak: number;
-    guessDistribution: number[];
-}
+	played: number;
+	winCount: number;
+	currentWinningStreak: number;
+	maxWinningStreak: number;
+	guessDistribution: number[];
+};

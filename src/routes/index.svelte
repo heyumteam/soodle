@@ -1,6 +1,20 @@
 <script lang="ts">
+	import type { Chars } from '$lib/types';
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
+	import { WORD_LENGTH } from '$lib/config';
+
+	let currentGuess: Chars[] = [];
+
+	const onKeyDown = (e: KeyboardEvent) => {
+		const key = e.key.toUpperCase();
+		if (key.length === 1 && key >= 'A' && key <= 'Z') {
+			if (currentGuess.length < WORD_LENGTH) {
+				currentGuess.push(key as Chars);
+				currentGuess = currentGuess;
+			}
+		}
+	};
 </script>
 
 <svelte:head>
@@ -8,8 +22,8 @@
 </svelte:head>
 
 <section>
-	<Grid />
-	<Keyboard />
+	<Grid {currentGuess} />
+	<Keyboard {onKeyDown} />
 </section>
 
 <style>

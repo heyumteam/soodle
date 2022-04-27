@@ -1,4 +1,7 @@
 <script lang="ts">
+	import type { Chars } from '$lib/types';
+	import { onDestroy, onMount } from 'svelte';
+	import { browser } from '$app/env';
 	import Key from './Key.svelte';
 	import {
 		FIRST_ROW_CHARS,
@@ -7,6 +10,18 @@
 		ENTER_STRING,
 		DELETE_STRING
 	} from './chars';
+
+	export let onKeyDown: (e: KeyboardEvent) => void;
+
+	onMount(() => {
+		window.addEventListener('keydown', onKeyDown);
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('keydown', onKeyDown);
+		}
+	});
 </script>
 
 <div class="keyboard">
