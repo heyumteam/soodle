@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Chars } from '$lib/types';
+	import type { Char } from '$lib/types';
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
 
-	export let currentGuess: Chars[];
+	export let currentGuess: Char[];
 	const emptyTiles = new Array(Math.max(MAX_TRIAL - 1, 0)).fill(undefined);
 </script>
 

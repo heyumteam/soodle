@@ -2,7 +2,7 @@
 export type CellStatus = 'correct' | 'exist' | 'absent';
 
 // character
-export type Chars =
+export type Char =
 	| 'Q'
 	| 'W'
 	| 'E'
@@ -29,14 +29,14 @@ export type Chars =
 	| 'B'
 	| 'N'
 	| 'M';
-export type SpecialKeys = 'Enter' | 'Delete';
+export type SpecialKey = 'Enter' | 'Delete';
 
 // keyboard key
 export type KeyStatus = 'correct' | 'exist' | 'absent' | 'unknown';
 
 // guess
 export type Guess = {
-	guess: Chars[];
+	guess: Char[];
 	statuses: CellStatus[];
 };
 

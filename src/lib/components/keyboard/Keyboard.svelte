@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Chars } from '$lib/types';
+	import type { Char } from '$lib/types';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import Key from './Key.svelte';
@@ -11,7 +11,7 @@
 		DELETE_STRING
 	} from './chars';
 
-	export let onChar: (char: Chars) => void;
+	export let onChar: (char: Char) => void;
 	// export let onEnter: () => void;
 	export let onDelete: () => void;
 	let onKeyDown = (e: KeyboardEvent) => {
@@ -19,7 +19,7 @@
 		if (key == 'DELETE' || key == 'BACKSPACE') {
 			onDelete();
 		} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
-			onChar(key as Chars);
+			onChar(key as Char);
 		}
 	};
 

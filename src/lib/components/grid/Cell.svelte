@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { CellStatus } from '$lib/types';
-	import type { Chars } from '$lib/types';
+	import type { Char } from '$lib/types';
 
 	let status: CellStatus | undefined = undefined;
-	export let char: Chars | undefined = undefined;
+	export let char: Char | undefined = undefined;
 </script>
 
 <div class="cell">
