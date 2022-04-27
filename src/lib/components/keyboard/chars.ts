@@ -25,7 +25,7 @@ export type Chars =
 	| 'B'
 	| 'N'
 	| 'M';
-export type SpecialKeys = 'Enter' |'Delete' ;
+export type SpecialKeys = 'Enter' | 'Delete';
 export type CharStatus = 'correct' | 'exist' | 'absent' | 'unknown';
 
 export const FIRST_ROW_CHARS: Chars[] = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];

@@ -13,7 +13,7 @@
 
 <style>
 	div {
-		display:flex;
+		display: flex;
 		flex-direction: column;
 	}
 </style>
