@@ -10,8 +10,7 @@
 	const onClick = (e: MouseEvent) => {
 		if (ALL_CHARS.includes(char as Chars)) {
 			onCharKeyClick(char as Chars);
-		}
-		else if (ALL_SPECIAL_KEYS.includes(char as SpecialKeys)) {
+		} else if (ALL_SPECIAL_KEYS.includes(char as SpecialKeys)) {
 			onSpecialKeyClick();
 		}
 	};
