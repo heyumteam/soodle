@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { CellStatus } from '$lib/types';
-	import type { Chars } from '$lib/components/keyboard/chars';
+	import type { Chars } from '$lib/types';
 
 	let status: CellStatus | undefined = undefined;
 	let char: Chars | undefined = undefined;
