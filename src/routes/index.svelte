@@ -1,9 +1,6 @@
 <script lang="ts">
-	import type { Chars } from '$lib/types';
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
-
-	let currentGuess: Chars[] = [];
 </script>
 
 <svelte:head>
@@ -11,7 +8,7 @@
 </svelte:head>
 
 <section>
-	<Grid {currentGuess} />
+	<Grid />
 	<Keyboard />
 </section>
 
