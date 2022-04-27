@@ -3,7 +3,7 @@
 	import type { Chars } from '$lib/types';
 
 	let status: CellStatus | undefined = undefined;
-	let char: Chars | undefined = undefined;
+	export let char: Chars | undefined = undefined;
 </script>
 
 <div class="cell">

@@ -1,11 +1,14 @@
-<script>
+<script lang='ts'>
+	import type { Chars } from '$lib/types';
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
 
-	const emptyTiles = new Array(MAX_TRIAL).fill(undefined);
+	export let currentGuess: Chars[];
+	const emptyTiles = new Array(MAX_TRIAL - 1).fill(undefined);
 </script>
 
 <div>
+	<Row guess={currentGuess} />
 	{#each emptyTiles as _}
 		<Row />
 	{/each}
