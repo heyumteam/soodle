@@ -7,5 +7,7 @@
 
 	"extensions": ["dbaeumer.vscode-eslint", "svelte.svelte-vscode"],
 
+	"forwardPorts": [3000],
+
 	"remoteUser": "node"
 }
