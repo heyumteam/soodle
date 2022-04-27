@@ -11,7 +11,17 @@
 		DELETE_STRING
 	} from './chars';
 
-	export let onKeyDown: (e: KeyboardEvent) => void;
+	export let onChar: (char: Chars) => void;
+	// export let onEnter: () => void;
+	export let onDelete: () => void;
+	let onKeyDown = (e: KeyboardEvent) => {
+		const key = e.key.toUpperCase();
+		if (key == 'DELETE' || key == 'BACKSPACE') {
+			onDelete();
+		} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
+			onChar(key as Chars);
+		}
+	};
 
 	onMount(() => {
 		window.addEventListener('keydown', onKeyDown);
@@ -27,20 +37,20 @@
 <div class="keyboard">
 	<div class="row">
 		{#each FIRST_ROW_CHARS as char}
-			<Key {char} />
+			<Key {char} onCharKeyClick={onChar} />
 		{/each}
 	</div>
 	<div class="row">
 		{#each SECOND_ROW_CHARS as char}
-			<Key {char} />
+			<Key {char} onCharKeyClick={onChar} />
 		{/each}
 	</div>
 	<div class="row">
 		<Key char={ENTER_STRING} />
 		{#each THIRD_ROW_CHARS as char}
-			<Key {char} />
+			<Key {char} onCharKeyClick={onChar} />
 		{/each}
-		<Key char={DELETE_STRING} />
+		<Key char={DELETE_STRING} onSpecialKeyClick={onDelete} />
 	</div>
 </div>
 

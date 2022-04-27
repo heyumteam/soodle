@@ -6,19 +6,17 @@
 
 	let currentGuess: Chars[] = [];
 
-	const onKeyDown = (e: KeyboardEvent) => {
-		const key = e.key.toUpperCase();
-		if (key == 'DELETE' || key == 'BACKSPACE') {
-			if (currentGuess.length > 0) {
-				currentGuess.pop();
-				currentGuess = currentGuess;
-			}
+	const onChar = (char: Chars) => {
+		if (currentGuess.length < WORD_LENGTH) {
+			currentGuess.push(char);
+			currentGuess = currentGuess;
 		}
-		else if (key.length === 1 && key >= 'A' && key <= 'Z') {
-			if (currentGuess.length < WORD_LENGTH) {
-				currentGuess.push(key as Chars);
-				currentGuess = currentGuess;
-			}
+	};
+
+	const onDelete = () => {
+		if (currentGuess.length > 0) {
+			currentGuess.pop();
+			currentGuess = currentGuess;
 		}
 	};
 </script>
@@ -29,7 +27,7 @@
 
 <section>
 	<Grid {currentGuess} />
-	<Keyboard {onKeyDown} />
+	<Keyboard {onChar} {onDelete} />
 </section>
 
 <style>
