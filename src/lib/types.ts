@@ -1,4 +1,7 @@
+// grid cell
 export type CellStatus = 'correct' | 'exist' | 'absent';
+
+// character
 export type Chars =
 	| 'Q'
 	| 'W'
@@ -27,4 +30,6 @@ export type Chars =
 	| 'N'
 	| 'M';
 export type SpecialKeys = 'Enter' | 'Delete';
-export type CharStatus = 'correct' | 'exist' | 'absent' | 'unknown';
+
+// keyboard key
+export type KeyStatus = 'correct' | 'exist' | 'absent' | 'unknown';

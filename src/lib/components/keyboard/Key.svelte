@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Chars, SpecialKeys, CharStatus } from '$lib/types';
+	import type { Chars, SpecialKeys, KeyStatus } from '$lib/types';
 
-	let status: CharStatus = 'unknown';
+	let status: KeyStatus = 'unknown';
 	export let char: Chars | SpecialKeys;
 </script>
 
