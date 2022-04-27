@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CellStatus } from './cellStatus';
+	import type { CellStatus } from '$lib/types';
 	import type { Chars } from '$lib/components/keyboard/chars';
 
 	let status: CellStatus | undefined = undefined;

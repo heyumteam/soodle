@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Chars, SpecialKeys, CharStatus } from './chars';
+	import type { Chars, SpecialKeys, CharStatus } from '$lib/types';
 
 	let status: CharStatus = 'unknown';
 	export let char: Chars | SpecialKeys;
