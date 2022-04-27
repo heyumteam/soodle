@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { Chars } from '$lib/types';
+	import type { Char } from '$lib/types';
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
 	import { WORD_LENGTH } from '$lib/config';
 
-	let currentGuess: Chars[] = [];
+	let currentGuess: Char[] = [];
 
-	const onChar = (char: Chars) => {
+	const onChar = (char: Char) => {
 		if (currentGuess.length < WORD_LENGTH) {
 			currentGuess.push(char);
 			currentGuess = currentGuess;
