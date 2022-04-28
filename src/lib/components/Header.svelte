@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { GAME_TITLE, GAME_URL } from './config';
-	import Setting from './modals/Setting.svelte';
-	import Stats from './modals/Stats.svelte';
+	import { GAME_TITLE, GAME_URL } from '$lib/config';
+	import Setting from '$lib/components/modals/Setting.svelte';
+	import Stats from '$lib/components/modals/Stats.svelte';
 </script>
 
 <header>
