@@ -1,6 +1,3 @@
-// grid cell
-export type CellStatus = 'correct' | 'exist' | 'absent';
-
 // character
 export type Char =
 	| 'Q'
@@ -29,15 +26,13 @@ export type Char =
 	| 'B'
 	| 'N'
 	| 'M';
+export type CharStatus = 'correct' | 'exist' | 'absent';
 export type SpecialKey = 'Enter' | 'Delete';
-
-// keyboard key
-export type KeyStatus = 'correct' | 'exist' | 'absent' | 'unknown';
 
 // guess
 export type Guess = {
 	guess: Char[];
-	statuses: CellStatus[];
+	statuses: CharStatus[];
 };
 
 // game

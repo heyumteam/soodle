@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Char, SpecialKey, KeyStatus } from '$lib/types';
+	import type { Char, SpecialKey, CharStatus } from '$lib/types';
 	import { ALL_CHARS, ALL_SPECIAL_KEYS } from './chars';
 
-	// let status: KeyStatus = 'unknown';
+	// let status: CharStatus = 'unknown';
 	export let char: Char | SpecialKey;
 
 	export let onCharKeyClick: (char: Char) => void = (char) => {};
