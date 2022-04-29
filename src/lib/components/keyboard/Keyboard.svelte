@@ -48,7 +48,7 @@
 		{/each}
 	</div>
 	<div class="row">
-		<Key char={ENTER_STRING} />
+		<Key char={ENTER_STRING} onSpecialKeyClick={onEnter} />
 		{#each THIRD_ROW_CHARS as char}
 			<Key {char} onCharKeyClick={onChar} />
 		{/each}
