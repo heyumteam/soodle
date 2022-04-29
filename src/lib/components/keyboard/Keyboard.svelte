@@ -12,11 +12,13 @@
 	} from './chars';
 
 	export let onChar: (char: Char) => void;
-	// export let onEnter: () => void;
+	export let onEnter: () => void;
 	export let onDelete: () => void;
 	let onKeyDown = (e: KeyboardEvent) => {
 		const key = e.key.toUpperCase();
-		if (key == 'DELETE' || key == 'BACKSPACE') {
+		if (key == 'ENTER' || key == 'RETURN') {
+			onEnter();
+		} else if (key == 'DELETE' || key == 'BACKSPACE') {
 			onDelete();
 		} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
 			onChar(key as Char);

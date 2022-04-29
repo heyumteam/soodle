@@ -37,12 +37,10 @@ export type Guess = {
 
 // game
 export type GameResult = 'win' | 'lose' | undefined;
-
 export type GameStatus = {
 	guesses: Guess[];
 	result: GameResult;
 };
-
 export type GameStats = {
 	played: number;
 	winCount: number;
@@ -50,3 +48,9 @@ export type GameStats = {
 	maxWinningStreak: number;
 	guessDistribution: number[];
 };
+
+// toast
+export type Toast = {
+	id: string;
+	message: string;
+}
