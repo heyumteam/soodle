@@ -53,4 +53,4 @@ export type GameStats = {
 export type Toast = {
 	id: string;
 	message: string;
-}
+};

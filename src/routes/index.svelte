@@ -3,7 +3,7 @@
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
 	import { WORD_LENGTH } from '$lib/config';
-	import {toasts} from '$lib/storages/toast';
+	import { toasts } from '$lib/storages/toast';
 
 	let currentGuess: Char[] = [];
 
@@ -18,7 +18,7 @@
 		if (currentGuess.length < WORD_LENGTH) {
 			toasts.send('단어가 너무 짧아요');
 		}
-	}
+	};
 
 	const onDelete = () => {
 		if (currentGuess.length > 0) {
