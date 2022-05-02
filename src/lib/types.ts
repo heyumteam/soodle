@@ -36,17 +36,11 @@ export type Guess = {
 };
 
 // game
-export type GameResult = 'win' | 'lose' | undefined;
-export type GameStatus = {
+export type Game = {
+	answer: string;
+	wordLength: number;
 	guesses: Guess[];
-	result: GameResult;
-};
-export type GameStats = {
-	played: number;
-	winCount: number;
-	currentWinningStreak: number;
-	maxWinningStreak: number;
-	guessDistribution: number[];
+	currentGuess: Char[];
 };
 
 // toast
