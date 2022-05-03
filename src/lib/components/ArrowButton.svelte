@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let char: string;
-    export let onclick: () => void;
+	export let onclick: () => void;
 </script>
 
 <button on:click={onclick}>
@@ -8,10 +8,10 @@
 </button>
 
 <style>
-    button {
-        background-color: transparent;
-        width: 5em;
-        height: 20em;
-        border: 0;
-    }
+	button {
+		background-color: transparent;
+		width: 5em;
+		height: 20em;
+		border: 0;
+	}
 </style>

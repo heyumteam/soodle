@@ -9,7 +9,7 @@
 	import { browser } from '$app/env';
 
 	const onChar = (char: Char) => {
-			currentGuess.addChar(char);
+		currentGuess.addChar(char);
 	};
 
 	const onEnter = () => {
@@ -19,18 +19,16 @@
 	};
 
 	const onDelete = () => {
-			currentGuess.removeChar();
+		currentGuess.removeChar();
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
 		const key = e.key.toUpperCase();
 		if (key == 'ARROWLEFT') {
 			game.prevQuiz();
-		} else
-		if (key == 'ARROWRIGHT') {
+		} else if (key == 'ARROWRIGHT') {
 			game.nextQuiz();
-		} else
-		if (key == 'ENTER' || key == 'RETURN') {
+		} else if (key == 'ENTER' || key == 'RETURN') {
 			onEnter();
 		} else if (key == 'DELETE' || key == 'BACKSPACE') {
 			onDelete();
@@ -55,10 +53,10 @@
 </svelte:head>
 
 <section>
-	<div class='grid-section'>
-		<ArrowButton char={'◀'} onclick={game.prevQuiz}/>
+	<div class="grid-section">
+		<ArrowButton char={'◀'} onclick={game.prevQuiz} />
 		<Grid />
-		<ArrowButton char={'▶'} onclick={game.nextQuiz}/>
+		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
 	</div>
 	<Keyboard {onChar} {onEnter} {onDelete} />
 </section>
