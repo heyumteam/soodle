@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Char } from '$lib/types';
 	import Cell from './Cell.svelte';
-	import {currentQuiz} from '$lib/storages/game';
+	import { currentQuiz } from '$lib/storages/game';
 
 	export let guess: Char[] = [];
 	$: emptyTiles = new Array(Math.max($currentQuiz.wordLength - guess.length, 0)).fill(undefined);
