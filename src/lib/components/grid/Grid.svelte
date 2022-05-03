@@ -2,13 +2,16 @@
 	import type { Char } from '$lib/types';
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
+	import { currentGuess } from '$lib/storages/game';
 
-	export let currentGuess: Char[];
+	// const currentGuessChars: Char[] = $currentGuess;
+
+	// export let currentGuess: Char[];
 	const emptyTiles = new Array(Math.max(MAX_TRIAL - 1, 0)).fill(undefined);
 </script>
 
 <div>
-	<Row guess={currentGuess} />
+	<Row guess={$currentGuess} />
 	{#each emptyTiles as _}
 		<Row />
 	{/each}

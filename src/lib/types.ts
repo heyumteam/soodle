@@ -36,11 +36,16 @@ export type Guess = {
 };
 
 // game
-export type Game = {
+export type Quiz = {
 	answer: string;
 	wordLength: number;
 	guesses: Guess[];
 	currentGuess: Char[];
+};
+
+export type Game = {
+	quizzes: Quiz[];
+	currentQuizIndex: number;
 };
 
 // toast
