@@ -50,7 +50,10 @@ const createGameStore = () => {
 	const addChar = (char: Char) => {
 		update((game) => {
 			const currentQuizIndex = game.currentQuizIndex;
-			game.quizzes[currentQuizIndex].currentGuess.push(char);
+			const maxLength = game.quizzes[currentQuizIndex].wordLength;
+			if (game.quizzes[currentQuizIndex].currentGuess.length < maxLength) {
+				game.quizzes[currentQuizIndex].currentGuess.push(char);
+			}
 			return game;
 		});
 	};
@@ -58,7 +61,9 @@ const createGameStore = () => {
 	const removeChar = () => {
 		update((game) => {
 			const currentQuizIndex = game.currentQuizIndex;
-			game.quizzes[currentQuizIndex].currentGuess.pop();
+			if (game.quizzes[currentQuizIndex].currentGuess.length > 0) {
+				game.quizzes[currentQuizIndex].currentGuess.pop();
+			}
 			return game;
 		});
 	};

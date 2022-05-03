@@ -9,9 +9,7 @@
 	import { browser } from '$app/env';
 
 	const onChar = (char: Char) => {
-		if ($currentGuess.length < $currentQuiz.wordLength) {
 			currentGuess.addChar(char);
-		}
 	};
 
 	const onEnter = () => {
@@ -21,14 +19,11 @@
 	};
 
 	const onDelete = () => {
-		if ($currentGuess.length > 0) {
 			currentGuess.removeChar();
-		}
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
 		const key = e.key.toUpperCase();
-		console.log(key);
 		if (key == 'ARROWLEFT') {
 			game.prevQuiz();
 		} else
