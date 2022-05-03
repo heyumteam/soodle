@@ -17,20 +17,20 @@
 <div class="keyboard">
 	<div class="row">
 		{#each FIRST_ROW_CHARS as char}
-			<Key {char} onCharKeyClick={onChar} />
+			<Key {char} onClick={() => onChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
 		{#each SECOND_ROW_CHARS as char}
-			<Key {char} onCharKeyClick={onChar} />
+			<Key {char} onClick={() => onChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
-		<Key char={ENTER_STRING} onSpecialKeyClick={onEnter} />
+		<Key char={ENTER_STRING} onClick={onEnter} />
 		{#each THIRD_ROW_CHARS as char}
-			<Key {char} onCharKeyClick={onChar} />
+			<Key {char} onClick={() => onChar(char)} />
 		{/each}
-		<Key char={DELETE_STRING} onSpecialKeyClick={onDelete} />
+		<Key char={DELETE_STRING} onClick={onDelete} />
 	</div>
 </div>
 

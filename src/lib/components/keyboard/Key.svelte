@@ -1,22 +1,12 @@
 <script lang="ts">
 	import type { Char, SpecialKey, CharStatus } from '$lib/types';
-	import { ALL_CHARS, ALL_SPECIAL_KEYS } from './chars';
 
 	// let status: CharStatus = 'unknown';
 	export let char: Char | SpecialKey;
-
-	export let onCharKeyClick: (char: Char) => void = (char) => {};
-	export let onSpecialKeyClick: () => void = () => {};
-	const onClick = (e: MouseEvent) => {
-		if (ALL_CHARS.includes(char as Char)) {
-			onCharKeyClick(char as Char);
-		} else if (ALL_SPECIAL_KEYS.includes(char as SpecialKey)) {
-			onSpecialKeyClick();
-		}
-	};
+	export let onClick: () => void;
 </script>
 
-<button class="key" on:click={onClick}>
+<button class="key" on:click={(e) => onClick()}>
 	{char}
 </button>
 
