@@ -24,7 +24,8 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		width: 20em;
+		width: 100%;
+		padding: 0 2em;
 	}
 
 	h1 {
