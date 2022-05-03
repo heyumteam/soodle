@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Char } from '$lib/types';
-	import { WORD_LENGTH } from '$lib/config';
 	import Cell from './Cell.svelte';
+	import {currentQuiz} from '$lib/storages/game';
 
 	export let guess: Char[] = [];
-	$: emptyTiles = new Array(Math.max(WORD_LENGTH - guess.length, 0)).fill(undefined);
+	$: emptyTiles = new Array(Math.max($currentQuiz.wordLength - guess.length, 0)).fill(undefined);
 </script>
 
 <div class="row">

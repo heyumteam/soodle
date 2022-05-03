@@ -2,18 +2,17 @@
 	import type { Char } from '$lib/types';
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
-	import { WORD_LENGTH } from '$lib/config';
 	import { toasts } from '$lib/storages/toast';
-	import { currentGuess } from '$lib/storages/game';
+	import { currentGuess, currentQuiz } from '$lib/storages/game';
 
 	const onChar = (char: Char) => {
-		if ($currentGuess.length < WORD_LENGTH) {
+		if ($currentGuess.length < $currentQuiz.wordLength) {
 			currentGuess.addChar(char);
 		}
 	};
 
 	const onEnter = () => {
-		if ($currentGuess.length < WORD_LENGTH) {
+		if ($currentGuess.length < $currentQuiz.wordLength) {
 			toasts.send('단어가 너무 짧아요');
 		}
 	};

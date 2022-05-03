@@ -1,6 +1,7 @@
 const WORDS = [
+	'test',
 	'power',
-	'common'
+	'common',
 	// 'optional'
 ];
 
