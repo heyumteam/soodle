@@ -9,18 +9,10 @@
 	import { browser } from '$app/env';
 	import { masterIsModalOpen } from '$lib/storages/modal';
 
-	const onChar = (char: Char) => {
-		currentGuess.addChar(char);
-	};
-
-	const onEnter = () => {
+	const submit = () => {
 		if ($currentGuess.length < $currentQuiz.wordLength) {
 			toasts.send('단어가 너무 짧아요');
 		}
-	};
-
-	const onDelete = () => {
-		currentGuess.removeChar();
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
@@ -31,11 +23,11 @@
 			} else if (key == 'ARROWRIGHT') {
 				game.nextQuiz();
 			} else if (key == 'ENTER' || key == 'RETURN') {
-				onEnter();
+				submit();
 			} else if (key == 'DELETE' || key == 'BACKSPACE') {
-				onDelete();
+				currentGuess.removeChar();
 			} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
-				onChar(key as Char);
+				currentGuess.addChar(key as Char);
 			}
 		}
 	};
@@ -61,7 +53,7 @@
 		<Grid />
 		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
 	</div>
-	<Keyboard {onChar} {onEnter} {onDelete} />
+	<Keyboard onEnter={submit} />
 </section>
 
 <style>

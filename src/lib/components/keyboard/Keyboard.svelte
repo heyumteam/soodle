@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Char } from '$lib/types';
 	import Key from './Key.svelte';
 	import {
 		FIRST_ROW_CHARS,
@@ -8,29 +7,28 @@
 		ENTER_STRING,
 		DELETE_STRING
 	} from './chars';
+	import { currentGuess } from '$lib/storages/game';
 
-	export let onChar: (char: Char) => void;
 	export let onEnter: () => void;
-	export let onDelete: () => void;
 </script>
 
 <div class="keyboard">
 	<div class="row">
 		{#each FIRST_ROW_CHARS as char}
-			<Key {char} onClick={() => onChar(char)} />
+			<Key {char} onClick={() => currentGuess.addChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
 		{#each SECOND_ROW_CHARS as char}
-			<Key {char} onClick={() => onChar(char)} />
+			<Key {char} onClick={() => currentGuess.addChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
 		<Key char={ENTER_STRING} onClick={onEnter} />
 		{#each THIRD_ROW_CHARS as char}
-			<Key {char} onClick={() => onChar(char)} />
+			<Key {char} onClick={() => currentGuess.addChar(char)} />
 		{/each}
-		<Key char={DELETE_STRING} onClick={onDelete} />
+		<Key char={DELETE_STRING} onClick={currentGuess.removeChar} />
 	</div>
 </div>
 
