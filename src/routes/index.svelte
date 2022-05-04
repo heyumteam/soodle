@@ -3,11 +3,11 @@
 	import Grid from '$lib/components/grid/Grid.svelte';
 	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
 	import ArrowButton from '$lib/components/ArrowButton.svelte';
-	import { toasts } from '$lib/storages/toast';
-	import { game, currentGuess, currentQuiz } from '$lib/storages/game';
-	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/env';
-	import { masterIsModalOpen } from '$lib/storages/modal';
+	import { onDestroy, onMount } from 'svelte';
+	import { toasts } from '$lib/storages/toast';
+	import { currentGuess, currentQuiz, game } from '$lib/storages/game';
+	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/storages/modal';
 
 	const submit = () => {
 		if ($currentGuess.length < $currentQuiz.wordLength) {
@@ -16,8 +16,13 @@
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
-		if (!$masterIsModalOpen) {
-			const key = e.key.toUpperCase();
+		const key = e.key.toUpperCase();
+		if ($masterIsModalOpen) {
+			if (key == 'ESCAPE') {
+				toggleOpenedModalOff();
+			}
+		}
+		else {
 			if (key == 'ARROWLEFT') {
 				game.prevQuiz();
 			} else if (key == 'ARROWRIGHT') {

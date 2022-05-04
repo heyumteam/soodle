@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Writable } from 'svelte/store';
+	import type { Readable } from 'svelte/store';
 
-	export let isOpen: Writable<boolean>;
+	export let isOpen: Readable<boolean>;
 	export let toggleOn: () => void;
 	export let toggleOff: () => void;
 </script>
