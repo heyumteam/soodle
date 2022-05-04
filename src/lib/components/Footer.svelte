@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { GITHUB_ADDRESS } from '$lib/config';
 	const versionString = __version__;
 </script>
