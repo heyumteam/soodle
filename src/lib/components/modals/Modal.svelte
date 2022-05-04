@@ -1,12 +1,21 @@
 <script lang="ts">
 	import type { Readable } from 'svelte/store';
+	import { spring } from 'svelte/motion';
 
 	export let isOpen: Readable<boolean>;
 	export let toggleOn: () => void;
 	export let toggleOff: () => void;
+
+	const scale = spring(1);
 </script>
 
-<button class="modal-button" on:click={(e) => toggleOn()}>
+<button
+	class="modal-button"
+	on:click={(e) => toggleOn()}
+	on:mouseenter={(e) => scale.set(1.2)}
+	on:mouseleave={(e) => scale.set(1)}
+	style="transform: scale({$scale});"
+>
 	<slot name="icon" />
 </button>
 
@@ -28,6 +37,7 @@
 		margin: 0 0.5em;
 		border: 0;
 		z-index: 10;
+		cursor: pointer;
 	}
 
 	div.modal-container {
