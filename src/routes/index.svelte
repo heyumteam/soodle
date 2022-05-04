@@ -7,6 +7,7 @@
 	import { game, currentGuess, currentQuiz } from '$lib/storages/game';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/env';
+	import { masterIsModalOpen } from '$lib/storages/modal';
 
 	const onChar = (char: Char) => {
 		currentGuess.addChar(char);
@@ -23,17 +24,19 @@
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
-		const key = e.key.toUpperCase();
-		if (key == 'ARROWLEFT') {
-			game.prevQuiz();
-		} else if (key == 'ARROWRIGHT') {
-			game.nextQuiz();
-		} else if (key == 'ENTER' || key == 'RETURN') {
-			onEnter();
-		} else if (key == 'DELETE' || key == 'BACKSPACE') {
-			onDelete();
-		} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
-			onChar(key as Char);
+		if (!$masterIsModalOpen) {
+			const key = e.key.toUpperCase();
+			if (key == 'ARROWLEFT') {
+				game.prevQuiz();
+			} else if (key == 'ARROWRIGHT') {
+				game.nextQuiz();
+			} else if (key == 'ENTER' || key == 'RETURN') {
+				onEnter();
+			} else if (key == 'DELETE' || key == 'BACKSPACE') {
+				onDelete();
+			} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
+				onChar(key as Char);
+			}
 		}
 	};
 
