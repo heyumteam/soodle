@@ -28,6 +28,6 @@
 	}
 
 	button.key:hover {
-		background-color: rgba(0, 0, 0, 0.1);
+		opacity: 0.5;
 	}
 </style>
