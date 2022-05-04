@@ -13,5 +13,6 @@
 		width: 5em;
 		height: 20em;
 		border: 0;
+		cursor: pointer;
 	}
 </style>

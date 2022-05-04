@@ -24,5 +24,6 @@
 		font-size: large;
 		font-weight: 600;
 		padding: 0 0.8em;
+		cursor: pointer;
 	}
 </style>
