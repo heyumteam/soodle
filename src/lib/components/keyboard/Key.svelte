@@ -26,4 +26,8 @@
 		padding: 0 0.8em;
 		cursor: pointer;
 	}
+
+	button.key:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
 </style>

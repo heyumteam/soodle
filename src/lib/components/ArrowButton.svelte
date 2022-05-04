@@ -15,4 +15,8 @@
 		border: 0;
 		cursor: pointer;
 	}
+
+	button:hover {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
 </style>
