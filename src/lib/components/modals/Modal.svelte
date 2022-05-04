@@ -10,15 +10,6 @@
 	<slot name="icon" />
 </button>
 
-<svelte:window
-	on:keydown={(e) => {
-		console.log(e.key);
-		if (e.key == 'Escape') {
-			toggleOff();
-		}
-	}}
-/>
-
 {#if $isOpen}
 	<div class="modal-container">
 		<div class="modal">
