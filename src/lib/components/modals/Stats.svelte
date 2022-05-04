@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ChartLine from 'carbon-icons-svelte/lib/ChartLine.svelte';
+	import SkillLevel from 'carbon-icons-svelte/lib/SkillLevel.svelte';
 	import Modal from './Modal.svelte';
 	import { createModalIsOpenStorage } from '$lib/storages/modal';
 
@@ -7,6 +7,6 @@
 </script>
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
-	<ChartLine slot="icon" size={32} />
+	<SkillLevel slot="icon" size={32} />
 	<div slot="content">Stats Modal</div>
 </Modal>
