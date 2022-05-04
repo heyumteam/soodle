@@ -21,8 +21,7 @@
 			if (key == 'ESCAPE') {
 				toggleOpenedModalOff();
 			}
-		}
-		else {
+		} else {
 			if (key == 'ARROWLEFT') {
 				game.prevQuiz();
 			} else if (key == 'ARROWRIGHT') {

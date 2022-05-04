@@ -6,16 +6,19 @@ export const masterIsModalOpen = writable(false);
 export const createModalIsOpenStorage = () => {
 	const individualIsModalOpen = writable(false);
 
-	const isOpen = derived<Writable<boolean>[], boolean>([masterIsModalOpen, individualIsModalOpen], (values, set) => {
-		const masterIsOpen = values[0];
-		const individualIsOpen = values[1];
-		if (masterIsOpen) {
-			set(individualIsOpen);
-		} else {
-			individualIsModalOpen.set(false);
-			set(false);
+	const isOpen = derived<Writable<boolean>[], boolean>(
+		[masterIsModalOpen, individualIsModalOpen],
+		(values, set) => {
+			const masterIsOpen = values[0];
+			const individualIsOpen = values[1];
+			if (masterIsOpen) {
+				set(individualIsOpen);
+			} else {
+				individualIsModalOpen.set(false);
+				set(false);
+			}
 		}
-	})
+	);
 
 	const toggleOn = () => {
 		if (!get(masterIsModalOpen)) {
