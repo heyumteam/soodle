@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { Char, CharStatus } from '$lib/types';
+	import type { Char } from '$lib/types';
 
-	let status: CharStatus | undefined = undefined;
 	export let char: Char | undefined = undefined;
 </script>
 
-<div class="cell">
+<div class="cell" class:empty={char === undefined} class:char-input={char !== undefined}>
 	{char ?? ''}
 </div>
 
@@ -14,12 +13,19 @@
 		display: flex;
 		font-size: x-large;
 		font-weight: 700;
-		border: 0.1em solid grey;
+		border-radius: 10%;
 		width: 2.2em;
 		height: 2.2em;
 		justify-content: center;
 		align-items: center;
-		border-radius: 10%;
 		margin: 0.15em;
+	}
+
+	div.empty {
+		border: 0.1em solid lightgrey;
+	}
+
+	div.char-input {
+		border: 0.1em solid grey;
 	}
 </style>

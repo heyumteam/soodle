@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { Char, SpecialKey, CharStatus } from '$lib/types';
+	import type { Char, SpecialKey } from '$lib/types';
 
-	// let status: CharStatus = 'unknown';
 	export let char: Char | SpecialKey;
 	export let onClick: () => void;
 </script>
