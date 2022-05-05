@@ -1,13 +1,15 @@
 <script lang="ts">
-	import { GAME_TITLE, GAME_URL } from '$lib/config';
+	import { GAME_URL } from '$lib/config';
+	import Info from '$lib/components/modals/Info.svelte';
 	import Setting from '$lib/components/modals/Setting.svelte';
 	import Stats from '$lib/components/modals/Stats.svelte';
 </script>
 
 <header>
 	<div class="header">
-		<h1><a href={GAME_URL}>{GAME_TITLE}</a></h1>
+		<h1><a href={GAME_URL}>수들</a></h1>
 		<div class="modals">
+			<Info />
 			<Stats />
 			<Setting />
 		</div>
