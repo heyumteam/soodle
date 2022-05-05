@@ -1,13 +1,17 @@
 <script lang="ts">
-	import { GAME_URL } from '$lib/config';
 	import Info from '$lib/components/modals/Info.svelte';
 	import Setting from '$lib/components/modals/Setting.svelte';
 	import Stats from '$lib/components/modals/Stats.svelte';
+
+	let rainbowLogo = false;
+	const toggleRainbowLogo = () => {
+		rainbowLogo = !rainbowLogo;
+	};
 </script>
 
 <header>
 	<div class="header">
-		<h1><a href={GAME_URL}>수들</a></h1>
+		<button class='logo' on:click={(e) => toggleRainbowLogo()} class:rainbow='{rainbowLogo}'>수들</button>
 		<div class="modals">
 			<Info />
 			<Stats />
@@ -27,19 +31,18 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		padding: 0 2em;
+		padding: 1em 2em;
 	}
 
-	h1 {
-		font-size: xx-large;
-	}
-
-	h1 > a {
+	button.logo {
+		background-color: transparent;
+		border: 0;
 		color: black;
-		text-decoration: none;
+		font-size: xx-large;
+		font-weight: 900;
 	}
 
-	h1 > a:hover {
+	button.rainbow {
 		-webkit-animation: rainbow 1s infinite;
 		animation: rainbow 1s infinite;
 	}

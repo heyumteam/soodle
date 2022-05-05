@@ -1,5 +1,4 @@
 // url settings
-export const GAME_URL = '/#';
 export const GITHUB_ADDRESS = 'github.com/heyumteam/soodle';
 
 // game settings
