@@ -8,5 +8,11 @@
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
 	<SkillLevel slot="icon" size={32} />
-	<div slot="content">Stats Modal</div>
+	<div slot="content" class="stats">아직 개발 중!</div>
 </Modal>
+
+<style>
+	div.stats {
+		margin: auto;
+	}
+</style>

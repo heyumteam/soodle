@@ -8,5 +8,11 @@
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
 	<Settings slot="icon" size={32} />
-	<div slot="content">Control Panel</div>
+	<div slot="content" class="control-panel">아직 개발 중!</div>
 </Modal>
+
+<style>
+	div.control-panel {
+		margin: auto;
+	}
+</style>
