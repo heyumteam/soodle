@@ -13,6 +13,7 @@
 
 <style>
 	div.stats {
-		margin: auto;
+		display: flex;
+		justify-content: center;
 	}
 </style>

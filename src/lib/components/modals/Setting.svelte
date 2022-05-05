@@ -13,6 +13,7 @@
 
 <style>
 	div.control-panel {
-		margin: auto;
+		display: flex;
+		justify-content: center;
 	}
 </style>
