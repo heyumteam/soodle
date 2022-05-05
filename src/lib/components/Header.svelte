@@ -11,7 +11,9 @@
 
 <header>
 	<div class="header">
-		<button class='logo' on:click={(e) => toggleRainbowLogo()} class:rainbow='{rainbowLogo}'>수들</button>
+		<button class="logo" class:rainbow={rainbowLogo} on:click={(e) => toggleRainbowLogo()}>
+			수들
+		</button>
 		<div class="modals">
 			<Info />
 			<Stats />
