@@ -1,14 +1,10 @@
 import type { Char } from '$lib/types';
-
-const WORDS = [
-	'test',
-	'power',
-	'common'
-	// 'optional'
-];
+import WORDS from './words.json';
 
 export const getTodaysAnswers = () => {
-	return [WORDS[0], WORDS[1]];
+	const key0 = Object.keys(WORDS)[0];
+	const key1 = Object.keys(WORDS)[1];
+	return [key0, key1];
 };
 
 export const isInDictionary = (chars: Char[]) => {
