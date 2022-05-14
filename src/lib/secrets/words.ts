@@ -1,3 +1,5 @@
+import type { Char } from '$lib/types';
+
 const WORDS = [
 	'test',
 	'power',
@@ -7,4 +9,8 @@ const WORDS = [
 
 export const getTodaysAnswers = () => {
 	return [WORDS[0], WORDS[1]];
+};
+
+export const isInDictionary = (chars: Char[]) => {
+	return false;
 };

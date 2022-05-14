@@ -8,10 +8,17 @@
 	import { toasts } from '$lib/storages/toast';
 	import { currentGuess, currentQuiz, game } from '$lib/storages/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/storages/modal';
+	import { isInDictionary } from '$lib/secrets/words';
 
 	const submit = () => {
+		// if current guess is too short
 		if ($currentGuess.length < $currentQuiz.wordLength) {
 			toasts.send('단어가 너무 짧아요');
+			return;
+		}
+		// if current guess is not in word dictionary
+		if (!isInDictionary($currentGuess)) {
+			toasts.send('사전에 없는 단어에요');
 		}
 	};
 
