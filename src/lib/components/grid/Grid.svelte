@@ -3,12 +3,12 @@
 	import Row from './Row.svelte';
 	import { currentGuess } from '$lib/storages/game';
 
-	const emptyTiles = new Array(Math.max(MAX_TRIAL - 1, 0)).fill(undefined);
+	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1, 0)).fill(undefined);
 </script>
 
 <div>
 	<Row guess={$currentGuess} />
-	{#each emptyTiles as _}
+	{#each emptyRows as _}
 		<Row />
 	{/each}
 </div>
