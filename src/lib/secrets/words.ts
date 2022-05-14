@@ -8,8 +8,8 @@ export const getTodaysAnswers = () => {
 };
 
 export const getDescription = (word: string) => {
-	const description = WORDS[word as (keyof typeof WORDS)]
-	return description
+	const description = WORDS[word as keyof typeof WORDS];
+	return description;
 };
 
 export const isInDictionary = (chars: Char[]) => {
