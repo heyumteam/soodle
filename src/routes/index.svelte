@@ -8,7 +8,7 @@
 	import { toasts } from '$lib/storages/toast';
 	import { currentGuess, currentQuiz, game } from '$lib/storages/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/storages/modal';
-	import { isInDictionary } from '$lib/secrets/words';
+	import { isInWordsList } from '$lib/secrets/words';
 
 	const submit = () => {
 		// if current guess is too short
@@ -17,7 +17,7 @@
 			return;
 		}
 		// if current guess is not in word dictionary
-		if (!isInDictionary($currentGuess)) {
+		if (!isInWordsList($currentGuess)) {
 			toasts.send('사전에 없는 단어에요');
 		}
 	};

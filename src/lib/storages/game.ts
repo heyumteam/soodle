@@ -1,7 +1,7 @@
 import type { Readable, Writable } from 'svelte/store';
 import type { Char, Game, Quiz } from '$lib/types';
 import { derived, writable } from 'svelte/store';
-import { getTodaysAnswers } from '$lib/secrets/words';
+import { getTodaysAnswers } from '$lib/secrets/dictionary';
 import { createQuiz } from './quiz';
 
 type gameStore = {
