@@ -19,6 +19,7 @@
 		// if current guess is not in word dictionary
 		if (!isInWordsList($currentGuess)) {
 			toasts.send('사전에 없는 단어에요');
+			return;
 		}
 	};
 
