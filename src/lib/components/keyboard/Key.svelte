@@ -9,6 +9,7 @@
 <button
 	class="key"
 	on:click={(e) => onClick()}
+	class:unknown={charStatus === undefined}
 	class:absent={charStatus === 'absent'}
 	class:exist={charStatus === 'exist'}
 	class:correct={charStatus === 'correct'}
@@ -19,7 +20,6 @@
 <style>
 	button.key {
 		display: flex;
-		background-color: lightgrey;
 		height: 3.3em;
 		min-width: 2.5em;
 		justify-content: center;
@@ -36,6 +36,11 @@
 	button.key:hover {
 		opacity: 0.5;
 	}
+
+	button.unknown {
+		background-color: var(--unknown-keyboard-color);
+	}
+
 	button.absent {
 		color: var(--checked-text-color);
 		background-color: var(--absent-color);
