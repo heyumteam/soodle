@@ -40,18 +40,18 @@
 
 	div.checked {
 		border: 0.1em solid transparent;
-		color: white;
+		color: var(--checked-text-color);
 	}
 
 	div.absent {
-		background-color: grey;
+		background-color: var(--absent-color);
 	}
 
 	div.exist {
-		background-color: rgb(164, 167, 34);
+		background-color: var(--exist-color);
 	}
 
 	div.correct {
-		background-color: rgb(73, 163, 38);
+		background-color: var(--correct-color);
 	}
 </style>
