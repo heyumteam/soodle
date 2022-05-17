@@ -72,12 +72,21 @@ const createGameStore = () => {
 
 	const makeGuess = () => {
 		update((game) => {
+			// make guess
 			const currentQuizIndex = game.currentQuizIndex;
 			const currentSolution = game.quizzes[currentQuizIndex].answer;
 			const guess = game.quizzes[currentQuizIndex].currentGuess;
 			const statuses = tryGuess(guess, currentSolution);
 			game.quizzes[currentQuizIndex].guesses.push({ guess, statuses });
 			game.quizzes[currentQuizIndex].currentGuess = [];
+			// update known chars
+			guess.forEach((char, i) => {
+				const status = statuses[i];
+				const knownStatus = game.quizzes[currentQuizIndex].knownChars[char];
+				if (knownStatus === undefined || (knownStatus === 'exist' && status === 'correct')) {
+					game.quizzes[currentQuizIndex].knownChars[char] = status;
+				}
+			});
 			return game;
 		});
 	};

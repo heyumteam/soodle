@@ -1,11 +1,18 @@
 <script lang="ts">
-	import type { Char, SpecialKey } from '$lib/types';
+	import type { Char, CharStatus, SpecialKey } from '$lib/types';
 
 	export let char: Char | SpecialKey;
+	export let charStatus: CharStatus | undefined = undefined;
 	export let onClick: () => void;
 </script>
 
-<button class="key" on:click={(e) => onClick()}>
+<button
+	class="key"
+	on:click={(e) => onClick()}
+	class:absent={charStatus === 'absent'}
+	class:exist={charStatus === 'exist'}
+	class:correct={charStatus === 'correct'}
+>
 	{char}
 </button>
 
@@ -28,5 +35,19 @@
 
 	button.key:hover {
 		opacity: 0.5;
+	}
+	button.absent {
+		color: var(--checked-text-color);
+		background-color: var(--absent-color);
+	}
+
+	button.exist {
+		color: var(--checked-text-color);
+		background-color: var(--exist-color);
+	}
+
+	button.correct {
+		color: var(--checked-text-color);
+		background-color: var(--correct-color);
 	}
 </style>

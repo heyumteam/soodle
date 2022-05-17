@@ -7,7 +7,7 @@
 		ENTER_STRING,
 		DELETE_STRING
 	} from './chars';
-	import { currentGuess } from '$lib/storages/game';
+	import { currentGuess, currentQuiz } from '$lib/storages/game';
 
 	export let onEnter: () => void;
 </script>
@@ -15,18 +15,30 @@
 <div class="keyboard">
 	<div class="row">
 		{#each FIRST_ROW_CHARS as char}
-			<Key {char} onClick={() => currentGuess.addChar(char)} />
+			<Key
+				{char}
+				charStatus={$currentQuiz.knownChars[char]}
+				onClick={() => currentGuess.addChar(char)}
+			/>
 		{/each}
 	</div>
 	<div class="row">
 		{#each SECOND_ROW_CHARS as char}
-			<Key {char} onClick={() => currentGuess.addChar(char)} />
+			<Key
+				{char}
+				charStatus={$currentQuiz.knownChars[char]}
+				onClick={() => currentGuess.addChar(char)}
+			/>
 		{/each}
 	</div>
 	<div class="row">
 		<Key char={ENTER_STRING} onClick={onEnter} />
 		{#each THIRD_ROW_CHARS as char}
-			<Key {char} onClick={() => currentGuess.addChar(char)} />
+			<Key
+				{char}
+				charStatus={$currentQuiz.knownChars[char]}
+				onClick={() => currentGuess.addChar(char)}
+			/>
 		{/each}
 		<Key char={DELETE_STRING} onClick={currentGuess.removeChar} />
 	</div>
