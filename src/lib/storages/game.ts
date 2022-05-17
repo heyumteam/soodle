@@ -11,6 +11,7 @@ type gameStore = {
 	prevQuiz: () => void;
 	addChar: (char: Char) => void;
 	removeChar: () => void;
+	makeGuess: () => void;
 };
 
 const createGameStore = () => {
@@ -69,12 +70,14 @@ const createGameStore = () => {
 		});
 	};
 
-	const makeGuess = (guess: Char[]) => {
+	const makeGuess = () => {
 		update((game) => {
 			const currentQuizIndex = game.currentQuizIndex;
 			const currentSolution = game.quizzes[currentQuizIndex].answer;
+			const guess = game.quizzes[currentQuizIndex].currentGuess;
 			const statuses = tryGuess(guess, currentSolution);
 			game.quizzes[currentQuizIndex].guesses.push({ guess, statuses });
+			game.quizzes[currentQuizIndex].currentGuess = [];
 			return game;
 		});
 	};
@@ -84,7 +87,8 @@ const createGameStore = () => {
 		nextQuiz,
 		prevQuiz,
 		addChar,
-		removeChar
+		removeChar,
+		makeGuess
 	};
 };
 
@@ -94,6 +98,7 @@ type quizStore = {
 	subscribe: Readable<Quiz>['subscribe'];
 	addChar: (char: Char) => void;
 	removeChar: () => void;
+	makeGuess: () => void;
 };
 
 const createCurrentQuizStore = () => {
@@ -105,11 +110,13 @@ const createCurrentQuizStore = () => {
 
 	const addChar = game.addChar;
 	const removeChar = game.removeChar;
+	const makeGuess = game.makeGuess;
 
 	return {
 		subscribe,
 		addChar,
-		removeChar
+		removeChar,
+		makeGuess
 	};
 };
 
