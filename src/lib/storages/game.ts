@@ -3,6 +3,7 @@ import type { Char, Game, Quiz } from '$lib/types';
 import { derived, writable } from 'svelte/store';
 import { getTodaysAnswers } from '$lib/secrets/dictionary';
 import { createQuiz } from './quiz';
+import { tryGuess } from '$lib/secrets/dictionary';
 
 type gameStore = {
 	subscribe: Writable<Game>['subscribe'];
@@ -64,6 +65,16 @@ const createGameStore = () => {
 			if (game.quizzes[currentQuizIndex].currentGuess.length > 0) {
 				game.quizzes[currentQuizIndex].currentGuess.pop();
 			}
+			return game;
+		});
+	};
+
+	const makeGuess = (guess: Char[]) => {
+		update((game) => {
+			const currentQuizIndex = game.currentQuizIndex;
+			const currentSolution = game.quizzes[currentQuizIndex].answer;
+			const statuses = tryGuess(guess, currentSolution);
+			game.quizzes[currentQuizIndex].guesses.push({ guess, statuses });
 			return game;
 		});
 	};

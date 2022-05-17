@@ -1,3 +1,4 @@
+import type { Char, CharStatus } from '$lib/types';
 import DICTIONARY from './dictionary.json';
 
 export const getTodaysAnswers = () => {
@@ -9,4 +10,8 @@ export const getTodaysAnswers = () => {
 export const getDescription = (word: string) => {
 	const description = DICTIONARY[word as keyof typeof DICTIONARY];
 	return description;
+};
+
+export const tryGuess = (chars: Char[], solution: string): CharStatus[] => {
+	return new Array(chars.length).fill('absent');
 };
