@@ -8,7 +8,7 @@
 	import { toasts } from '$lib/store/toast';
 	import { currentGuess, currentQuiz, game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
-	import { isInWordsList } from '$lib/secret/word';
+	import { isInWordList } from '$lib/secret/word';
 	import { loadGame, saveGame } from '$lib/storage/local';
 
 	const submit = () => {
@@ -18,7 +18,7 @@
 			return;
 		}
 		// if current guess is not in word dictionary
-		if (!isInWordsList($currentGuess)) {
+		if (!isInWordList($currentGuess)) {
 			toasts.send('사전에 없는 단어에요');
 			return;
 		}
