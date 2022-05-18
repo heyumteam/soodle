@@ -7,3 +7,7 @@ export const NUM_WORDS = 2;
 
 // environment settings
 export const TOAST_TIMEOUT = 2000;
+
+// animation settings
+export const FLIP_ANIMATION_DURATION = 0.5;
+export const FLIP_ANIMATION_DELAY_PER_CELL = 0.2;
