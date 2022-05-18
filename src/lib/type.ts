@@ -62,6 +62,7 @@ export type GameStore = {
 	subscribe: Writable<Game>['subscribe'];
 	nextQuiz: () => void;
 	prevQuiz: () => void;
+	moveToQuiz: (index: number) => void;
 	addChar: (char: Char) => void;
 	removeChar: () => void;
 	makeGuess: () => void;
@@ -80,3 +81,10 @@ export type GuessStore = {
 	removeChar: () => void;
 };
 
+// storage
+export type StoredGame = {
+	day: string;
+	quizzes: {
+		guesses: Char[][];
+	}[];
+};

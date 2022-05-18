@@ -61,6 +61,13 @@ const createGameStore = () => {
 		});
 	};
 
+	const moveToQuiz = (index: number) => {
+		update((game) => {
+			game.currentQuizIndex = index;
+			return game;
+		});
+	};
+
 	const addChar = (char: Char) => {
 		update((game) => {
 			const currentQuizIndex = game.currentQuizIndex;
@@ -107,6 +114,7 @@ const createGameStore = () => {
 		subscribe,
 		nextQuiz,
 		prevQuiz,
+		moveToQuiz,
 		addChar,
 		removeChar,
 		makeGuess

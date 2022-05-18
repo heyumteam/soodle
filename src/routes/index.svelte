@@ -9,6 +9,7 @@
 	import { currentGuess, currentQuiz, game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
 	import { isInWordsList } from '$lib/secret/word';
+	import { loadGame, saveGame } from '$lib/storage/local';
 
 	const submit = () => {
 		// if current guess is too short
@@ -23,6 +24,8 @@
 		}
 		// make guess
 		currentQuiz.makeGuess();
+		// store result
+		saveGame();
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
@@ -47,6 +50,7 @@
 	};
 
 	onMount(() => {
+		loadGame();
 		window.addEventListener('keydown', onKeyDown);
 	});
 
