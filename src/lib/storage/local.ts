@@ -40,6 +40,6 @@ export const loadGame = () => {
 	game.moveToQuiz(0);
 };
 
-export const resetStorages = () => {
+export const resetStorage = () => {
 	localStorage.removeItem(gameKey);
 };
