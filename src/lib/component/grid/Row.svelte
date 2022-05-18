@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Char, CharStatus } from '$lib/types';
+	import type { Char, CharStatus } from '$lib/type';
 	import Cell from './Cell.svelte';
-	import { currentQuiz } from '$lib/storages/game';
+	import { currentQuiz } from '$lib/store/game';
 
 	export let guess: Char[] = [];
 	export let charStatuses: CharStatus[] = [];

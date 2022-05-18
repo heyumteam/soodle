@@ -1,8 +1,8 @@
 import type { Readable, Writable } from 'svelte/store';
-import type { Char, CharStatus, Game, Guess, Quiz } from '$lib/types';
+import type { Char, CharStatus, Game, Guess, Quiz } from '$lib/type';
 import { derived, writable } from 'svelte/store';
-import { getTodaysAnswers } from '$lib/secrets/dictionary';
-import { tryGuess } from '$lib/secrets/dictionary';
+import { getTodaysAnswers } from '$lib/secret/dictionary';
+import { tryGuess } from '$lib/secret/dictionary';
 
 const createQuiz: (answer: string) => Quiz = (answer) => {
 	const wordLength = answer.length;

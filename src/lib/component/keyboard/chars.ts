@@ -1,4 +1,4 @@
-import type { Char, SpecialKey } from '$lib/types';
+import type { Char, SpecialKey } from '$lib/type';
 
 export const FIRST_ROW_CHARS: Char[] = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 export const SECOND_ROW_CHARS: Char[] = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Char, CharStatus } from '$lib/types';
+	import type { Char, CharStatus } from '$lib/type';
 
 	export let char: Char | undefined = undefined;
 	export let status: CharStatus | undefined = undefined;

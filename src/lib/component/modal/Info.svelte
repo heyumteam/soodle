@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Information from 'carbon-icons-svelte/lib/Information.svelte';
 	import Modal from './Modal.svelte';
-	import { createModalIsOpenStorage } from '$lib/storages/modal';
+	import { createModalIsOpenStorage } from '$lib/store/modal';
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
 </script>

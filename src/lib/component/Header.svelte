@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Info from '$lib/components/modals/Info.svelte';
-	import Setting from '$lib/components/modals/Setting.svelte';
-	import Stats from '$lib/components/modals/Stats.svelte';
+	import Info from '$lib/component/modal/Info.svelte';
+	import Setting from '$lib/component/modal/Setting.svelte';
+	import Stats from '$lib/component/modal/Stats.svelte';
 
 	let rainbowLogo = false;
 	const toggleRainbowLogo = () => {

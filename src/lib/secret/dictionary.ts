@@ -1,4 +1,4 @@
-import type { Char, CharStatus } from '$lib/types';
+import type { Char, CharStatus } from '$lib/type';
 import DICTIONARY from './dictionary.json';
 
 export const getTodaysAnswers = () => {

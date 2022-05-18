@@ -7,7 +7,7 @@
 		ENTER_STRING,
 		DELETE_STRING
 	} from './chars';
-	import { currentGuess, currentQuiz } from '$lib/storages/game';
+	import { currentGuess, currentQuiz } from '$lib/store/game';
 
 	export let onEnter: () => void;
 </script>

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { Char } from '$lib/types';
-	import Grid from '$lib/components/grid/Grid.svelte';
-	import Keyboard from '$lib/components/keyboard/Keyboard.svelte';
-	import ArrowButton from '$lib/components/ArrowButton.svelte';
+	import type { Char } from '$lib/type';
+	import Grid from '$lib/component/grid/Grid.svelte';
+	import Keyboard from '$lib/component/keyboard/Keyboard.svelte';
+	import ArrowButton from '$lib/component/ArrowButton.svelte';
 	import { browser } from '$app/env';
 	import { onDestroy, onMount } from 'svelte';
-	import { toasts } from '$lib/storages/toast';
-	import { currentGuess, currentQuiz, game } from '$lib/storages/game';
-	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/storages/modal';
-	import { isInWordsList } from '$lib/secrets/words';
+	import { toasts } from '$lib/store/toast';
+	import { currentGuess, currentQuiz, game } from '$lib/store/game';
+	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
+	import { isInWordsList } from '$lib/secret/word';
 
 	const submit = () => {
 		// if current guess is too short

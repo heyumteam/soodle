@@ -1,4 +1,4 @@
-import type { Toast } from '$lib/types';
+import type { Toast } from '$lib/type';
 import { writable } from 'svelte/store';
 import { TOAST_TIMEOUT } from '$lib/config';
 

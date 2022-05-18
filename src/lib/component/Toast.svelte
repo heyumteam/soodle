@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
-	import { toasts } from '$lib/storages/toast';
+	import { toasts } from '$lib/store/toast';
 </script>
 
 <div class="container">

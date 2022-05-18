@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
-	import { currentQuiz } from '$lib/storages/game';
-	import { currentGuess } from '$lib/storages/game';
+	import { currentQuiz } from '$lib/store/game';
+	import { currentGuess } from '$lib/store/game';
 
 	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - $currentQuiz.guesses.length, 0)).fill(
 		undefined
