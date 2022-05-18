@@ -39,13 +39,15 @@
 	}
 
 	div.char-input {
+		color: var(--text-color);
 		border: 0.1em solid grey;
 	}
 
 	div.checked {
-		border: 0.1em solid transparent;
 		color: var(--checked-text-color);
-		animation: rotate var(--duration) linear var(--delay);
+		border: 0.1em solid transparent;
+		animation: reveal var(--duration) linear var(--delay);
+		animation-fill-mode: backwards;
 	}
 
 	div.absent {
@@ -60,12 +62,18 @@
 		background-color: var(--correct-color);
 	}
 
-	@keyframes rotate {
+	@keyframes reveal {
 		0% {
 			transform: rotateX(0deg);
+			border: 0.1em solid grey;
+			color: var(--text-color);
+			background-color: transparent;
 		}
 		50% {
-			transform: rotateX(90deg)
+			transform: rotateX(90deg);
+			border: 0.1em solid grey;
+			color: var(--text-color);
+			background-color: transparent;
 		}
 		100% {
 			transform: rotateX(0deg);
