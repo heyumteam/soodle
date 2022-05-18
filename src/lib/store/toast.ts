@@ -27,4 +27,4 @@ const createToastStore = () => {
 	};
 };
 
-export const toasts = createToastStore();
+export const toast = createToastStore();

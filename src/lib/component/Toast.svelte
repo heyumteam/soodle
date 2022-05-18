@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
-	import { toasts } from '$lib/store/toast';
+	import { toast } from '$lib/store/toast';
 </script>
 
 <div class="container">
-	{#each $toasts as toast (toast.id)}
+	{#each $toast as toast (toast.id)}
 		<div class="message" animate:flip transition:fly={{ y: 30 }}>
 			{toast.message}
 		</div>
