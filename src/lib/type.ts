@@ -66,6 +66,7 @@ export type GameStore = {
 	addChar: (char: Char) => void;
 	removeChar: () => void;
 	makeGuess: () => void;
+	reset: () => void;
 };
 
 export type QuizStore = {

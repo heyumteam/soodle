@@ -27,13 +27,16 @@ const createQuiz: (answer: string) => Quiz = (answer) => {
 };
 
 const createGameStore = () => {
-	const answers = getTodaysAnswers();
-	const quizzes = answers.map(createQuiz);
+	const createGame = () => {
+		const answers = getTodaysAnswers();
+		const quizzes = answers.map(createQuiz);
+		return {
+			quizzes,
+			currentQuizIndex: 0
+		};
+	};
 
-	const { subscribe, update } = writable<Game>({
-		quizzes,
-		currentQuizIndex: 0
-	});
+	const { subscribe, update } = writable<Game>(createGame());
 
 	const nextQuiz = () => {
 		update((game) => {
@@ -110,6 +113,10 @@ const createGameStore = () => {
 		});
 	};
 
+	const reset = () => {
+		update(() => createGame());
+	};
+
 	return {
 		subscribe,
 		nextQuiz,
@@ -117,7 +124,8 @@ const createGameStore = () => {
 		moveToQuiz,
 		addChar,
 		removeChar,
-		makeGuess
+		makeGuess,
+		reset
 	};
 };
 
