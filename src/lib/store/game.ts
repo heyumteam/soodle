@@ -1,5 +1,13 @@
-import type { Readable, Writable } from 'svelte/store';
-import type { Char, CharStatus, Game, Guess, Quiz } from '$lib/type';
+import type {
+	Char,
+	CharStatus,
+	Game,
+	GameStore,
+	Guess,
+	GuessStore,
+	Quiz,
+	QuizStore
+} from '$lib/type';
 import { derived, writable } from 'svelte/store';
 import { getTodaysAnswers } from '$lib/secret/dictionary';
 import { tryGuess } from '$lib/secret/dictionary';
@@ -16,15 +24,6 @@ const createQuiz: (answer: string) => Quiz = (answer) => {
 		currentGuess,
 		knownChars
 	};
-};
-
-type gameStore = {
-	subscribe: Writable<Game>['subscribe'];
-	nextQuiz: () => void;
-	prevQuiz: () => void;
-	addChar: (char: Char) => void;
-	removeChar: () => void;
-	makeGuess: () => void;
 };
 
 const createGameStore = () => {
@@ -114,17 +113,10 @@ const createGameStore = () => {
 	};
 };
 
-export const game: gameStore = createGameStore();
-
-type quizStore = {
-	subscribe: Readable<Quiz>['subscribe'];
-	addChar: (char: Char) => void;
-	removeChar: () => void;
-	makeGuess: () => void;
-};
+export const game: GameStore = createGameStore();
 
 const createCurrentQuizStore = () => {
-	const { subscribe } = derived<gameStore, Quiz>(game, (game, set) => {
+	const { subscribe } = derived<GameStore, Quiz>(game, (game, set) => {
 		const index = game.currentQuizIndex;
 		const quiz = game.quizzes[index];
 		set(quiz);
@@ -142,16 +134,10 @@ const createCurrentQuizStore = () => {
 	};
 };
 
-export const currentQuiz: quizStore = createCurrentQuizStore();
-
-type guessStore = {
-	subscribe: Readable<Char[]>['subscribe'];
-	addChar: (char: Char) => void;
-	removeChar: () => void;
-};
+export const currentQuiz: QuizStore = createCurrentQuizStore();
 
 const createCurrentGuessStore = () => {
-	const { subscribe } = derived<quizStore, Char[]>(currentQuiz, (quiz, set) => {
+	const { subscribe } = derived<QuizStore, Char[]>(currentQuiz, (quiz, set) => {
 		set(quiz.currentGuess);
 	});
 
@@ -165,4 +151,4 @@ const createCurrentGuessStore = () => {
 	};
 };
 
-export const currentGuess: guessStore = createCurrentGuessStore();
+export const currentGuess: GuessStore = createCurrentGuessStore();

@@ -1,3 +1,5 @@
+import type { Readable, Writable } from 'svelte/store';
+
 // character
 export type Char =
 	| 'Q'
@@ -54,3 +56,27 @@ export type Toast = {
 	id: string;
 	message: string;
 };
+
+// store
+export type GameStore = {
+	subscribe: Writable<Game>['subscribe'];
+	nextQuiz: () => void;
+	prevQuiz: () => void;
+	addChar: (char: Char) => void;
+	removeChar: () => void;
+	makeGuess: () => void;
+};
+
+export type QuizStore = {
+	subscribe: Readable<Quiz>['subscribe'];
+	addChar: (char: Char) => void;
+	removeChar: () => void;
+	makeGuess: () => void;
+};
+
+export type GuessStore = {
+	subscribe: Readable<Char[]>['subscribe'];
+	addChar: (char: Char) => void;
+	removeChar: () => void;
+};
+
