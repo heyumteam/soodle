@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;800&display=swap');
 
 :root {
-	font-family: 'Nanum Gothic';
+	font-family: 'Noto Sans KR';
 	--background-color: #fffff9;
 	--less-important-color: #5f5f5f;
 	--text-color: #000000;
