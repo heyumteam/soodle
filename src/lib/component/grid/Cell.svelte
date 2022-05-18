@@ -61,10 +61,13 @@
 	}
 
 	@keyframes rotate {
-		from {
-			transform: rotateX(-180deg);
+		0% {
+			transform: rotateX(0deg);
 		}
-		to {
+		50% {
+			transform: rotateX(90deg)
+		}
+		100% {
 			transform: rotateX(0deg);
 		}
 	}
