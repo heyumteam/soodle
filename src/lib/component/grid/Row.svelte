@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Char, CharStatus } from '$lib/type';
 	import Cell from './Cell.svelte';
-	import { currentQuiz } from '$lib/store/game';
 	import { FLIP_ANIMATION_DURATION, FLIP_ANIMATION_DELAY_PER_CELL } from '$lib/config';
 
+	export let wordLength: number;
 	export let guess: Char[] = [];
 	export let charStatuses: CharStatus[] = [];
-	$: emptyTiles = new Array(Math.max($currentQuiz.wordLength - guess.length, 0)).fill(undefined);
+	$: emptyTiles = new Array(Math.max(wordLength - guess.length, 0)).fill(undefined);
 </script>
 
 <div class="row">

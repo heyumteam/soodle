@@ -23,7 +23,7 @@
 			return;
 		}
 		// make guess
-		currentQuiz.makeGuess();
+		game.makeGuess();
 		// store result
 		saveGame();
 	};
@@ -42,9 +42,9 @@
 			} else if (key == 'ENTER' || key == 'RETURN') {
 				submit();
 			} else if (key == 'DELETE' || key == 'BACKSPACE') {
-				currentGuess.removeChar();
+				game.removeChar();
 			} else if (key.length === 1 && key >= 'A' && key <= 'Z') {
-				currentGuess.addChar(key as Char);
+				game.addChar(key as Char);
 			}
 		}
 	};
@@ -68,9 +68,13 @@
 <section>
 	<div class="grid-section">
 		<ArrowButton char={'◀'} onclick={game.prevQuiz} />
-		<div id="capture">
-			<Grid />
-		</div>
+		{#each $game.quizzes as quiz (quiz.id)}
+			{#if quiz.id === $game.currentQuizIndex}
+				<div id="capture">
+					<Grid {quiz} currentGuess={quiz.currentGuess}/>
+				</div>
+			{/if}
+		{/each}
 		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
 	</div>
 	<Keyboard onEnter={submit} />

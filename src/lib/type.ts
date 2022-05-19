@@ -39,6 +39,7 @@ export type Guess = {
 
 // game
 export type Quiz = {
+	id: number;
 	answer: string;
 	wordLength: number;
 	guesses: Guess[];

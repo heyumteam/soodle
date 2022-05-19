@@ -12,12 +12,13 @@ import { derived, writable } from 'svelte/store';
 import { getTodaysAnswers } from '$lib/secret/dictionary';
 import { tryGuess } from '$lib/secret/dictionary';
 
-const createQuiz: (answer: string) => Quiz = (answer) => {
+const createQuiz = (id: number, answer: string): Quiz => {
 	const wordLength = answer.length;
 	const guesses: Guess[] = [];
 	const currentGuess: Char[] = [];
 	const knownChars: { [char in Char]?: CharStatus } = {};
 	return {
+		id,
 		answer,
 		wordLength,
 		guesses,
@@ -29,7 +30,7 @@ const createQuiz: (answer: string) => Quiz = (answer) => {
 const createGameStore = () => {
 	const createGame = () => {
 		const answers = getTodaysAnswers();
-		const quizzes = answers.map(createQuiz);
+		const quizzes = answers.map((answer, i) => createQuiz(i, answer));
 		return {
 			quizzes,
 			currentQuizIndex: 0

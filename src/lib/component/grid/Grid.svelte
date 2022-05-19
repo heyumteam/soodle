@@ -1,21 +1,23 @@
 <script lang="ts">
+	import type { Char, Quiz } from '$lib/type';
 	import { MAX_TRIAL } from '$lib/config';
 	import Row from './Row.svelte';
-	import { currentQuiz } from '$lib/store/game';
-	import { currentGuess } from '$lib/store/game';
 
-	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - $currentQuiz.guesses.length, 0)).fill(
+	export let quiz: Quiz;
+	export let currentGuess: Char[] = [];
+
+	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - quiz.guesses.length, 0)).fill(
 		undefined
 	);
 </script>
 
 <div>
-	{#each $currentQuiz.guesses as guess}
-		<Row guess={guess.guess} charStatuses={guess.statuses} />
+	{#each quiz.guesses as guess}
+		<Row wordLength={quiz.wordLength} guess={guess.guess} charStatuses={guess.statuses} />
 	{/each}
-	<Row guess={$currentGuess} />
+	<Row wordLength={quiz.wordLength} guess={currentGuess} />
 	{#each emptyRows as _}
-		<Row />
+		<Row wordLength={quiz.wordLength} />
 	{/each}
 </div>
 
