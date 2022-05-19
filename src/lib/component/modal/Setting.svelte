@@ -77,11 +77,11 @@
 	}
 
 	div.danger {
-		background-color: rgb(255, 89, 89);
+		background-color: var(--danger-button-color);
 	}
 
 	div.button.normal {
-		background-color: rgb(137, 255, 126);
+		background-color: var(--normal-button-color);
 	}
 
 	div.slider {
