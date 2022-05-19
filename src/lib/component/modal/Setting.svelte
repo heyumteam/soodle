@@ -35,7 +35,11 @@
 	<div slot="content" class="control-panel">
 		<div class="entry">
 			<div>사진 모드</div>
-			<div class="slider" class:toggle-on={$transparentMode} on:click={transparentModeOption.toggle}>
+			<div
+				class="slider"
+				class:toggle-on={$transparentMode}
+				on:click={transparentModeOption.toggle}
+			>
 				<div class="toggle" />
 			</div>
 		</div>
@@ -81,7 +85,7 @@
 	}
 
 	div.slider {
-		display:flex;
+		display: flex;
 		align-items: center;
 		width: 3em;
 		height: 1.6em;
@@ -99,7 +103,7 @@
 		width: 1.2em;
 		height: 1.2em;
 		border-radius: 50%;
-		margin:0.2em;
+		margin: 0.2em;
 		background-color: white;
 	}
 </style>
