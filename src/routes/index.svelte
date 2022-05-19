@@ -68,7 +68,9 @@
 <section>
 	<div class="grid-section">
 		<ArrowButton char={'◀'} onclick={game.prevQuiz} />
-		<Grid />
+		<div id="capture">
+			<Grid />
+		</div>
 		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
 	</div>
 	<Keyboard onEnter={submit} />

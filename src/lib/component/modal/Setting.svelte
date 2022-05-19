@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Settings from 'carbon-icons-svelte/lib/Settings.svelte';
 	import Modal from './Modal.svelte';
+	import html2canvas from 'html2canvas';
 	import { createModalIsOpenStorage } from '$lib/store/modal';
 	import { resetStorage } from '$lib/storage/local';
 	import { toast } from '$lib/store/toast';
@@ -14,11 +15,26 @@
 		toast.send('기록이 삭제되었어요');
 		game.reset();
 	};
+
+	const captureGrid = (e: MouseEvent) => {
+		html2canvas(document.querySelector('#capture') as HTMLElement).then(canvas => {
+			canvas.toBlob((blob) => {
+				const item = new ClipboardItem({ "image/png": blob as Blob });
+				navigator.clipboard.write([item]);
+			});
+		});
+		toggleOff();
+		toast.send('결과가 복사 되었어요');
+	};
 </script>
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
 	<Settings slot="icon" size={32} />
 	<div slot="content" class="control-panel">
+		<div class="entry">
+			<div>공유</div>
+			<div on:click={captureGrid} class="button normal">결과 복사</div>
+		</div>
 		<div class="entry">
 			<div>기록 삭제</div>
 			<div on:click={resetStorageFunction} class="button danger">삭제</div>
@@ -50,5 +66,9 @@
 
 	div.danger {
 		background-color: rgb(255, 65, 65);
+	}
+
+	div.button.normal {
+		background-color: rgb(137, 255, 126);
 	}
 </style>
