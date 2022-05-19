@@ -6,8 +6,21 @@
 	import { resetStorage } from '$lib/storage/local';
 	import { toast } from '$lib/store/toast';
 	import { game } from '$lib/store/game';
+	import { transparentModeOption } from '$lib/store/config';
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
+
+	const transparentMode = transparentModeOption.option;
+
+	const captureGrid = (e: MouseEvent) => {
+		html2canvas(document.querySelector('#capture') as HTMLElement).then((canvas) => {
+			canvas.toBlob((blob) => {
+				const item = new ClipboardItem({ 'image/png': blob as Blob });
+				navigator.clipboard.write([item]);
+			});
+		});
+		toast.send('사진이 복사 되었어요');
+	};
 
 	const resetStorageFunction = (e: MouseEvent) => {
 		resetStorage();
@@ -15,29 +28,24 @@
 		toast.send('기록이 삭제되었어요');
 		game.reset();
 	};
-
-	const captureGrid = (e: MouseEvent) => {
-		html2canvas(document.querySelector('#capture') as HTMLElement).then(canvas => {
-			canvas.toBlob((blob) => {
-				const item = new ClipboardItem({ "image/png": blob as Blob });
-				navigator.clipboard.write([item]);
-			});
-		});
-		toggleOff();
-		toast.send('결과가 복사 되었어요');
-	};
 </script>
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
 	<Settings slot="icon" size={32} />
 	<div slot="content" class="control-panel">
 		<div class="entry">
+			<div>사진 모드</div>
+			<div class="slider" class:toggle-on={$transparentMode} on:click={transparentModeOption.toggle}>
+				<div class="toggle" />
+			</div>
+		</div>
+		<div class="entry">
 			<div>공유</div>
-			<div on:click={captureGrid} class="button normal">결과 복사</div>
+			<div class="button normal" on:click={captureGrid}>사진 복사</div>
 		</div>
 		<div class="entry">
 			<div>기록 삭제</div>
-			<div on:click={resetStorageFunction} class="button danger">삭제</div>
+			<div class="button danger" on:click={resetStorageFunction}>삭제</div>
 		</div>
 	</div>
 </Modal>
@@ -65,10 +73,33 @@
 	}
 
 	div.danger {
-		background-color: rgb(255, 65, 65);
+		background-color: rgb(250, 44, 44);
 	}
 
 	div.button.normal {
 		background-color: rgb(137, 255, 126);
+	}
+
+	div.slider {
+		display:flex;
+		align-items: center;
+		width: 3em;
+		height: 1.6em;
+		cursor: pointer;
+		border-radius: 1em;
+		background-color: grey;
+	}
+
+	div.slider.toggle-on {
+		background-color: #2196f3;
+		flex-direction: row-reverse;
+	}
+
+	div.toggle {
+		width: 1.2em;
+		height: 1.2em;
+		border-radius: 50%;
+		margin:0.2em;
+		background-color: white;
 	}
 </style>

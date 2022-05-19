@@ -1,11 +1,14 @@
 <script lang="ts">
 	import type { Char, CharStatus } from '$lib/type';
+	import { transparentModeOption } from '$lib/store/config';
 
 	export let animationDuration = 0.5;
 	export let animationDelay = 0;
 
 	export let char: Char | undefined = undefined;
 	export let status: CharStatus | undefined = undefined;
+
+	const transparentMode = transparentModeOption.option;
 </script>
 
 <div
@@ -16,6 +19,7 @@
 	class:absent={status === 'absent'}
 	class:exist={status === 'exist'}
 	class:correct={status === 'correct'}
+	class:transparent-mode={$transparentMode}
 	style="--duration: {animationDuration}s; --delay: {animationDelay}s;"
 >
 	{char ?? ''}
@@ -60,6 +64,10 @@
 
 	div.correct {
 		background-color: var(--correct-color);
+	}
+
+	div.transparent-mode {
+		color: transparent;
 	}
 
 	@keyframes reveal {
