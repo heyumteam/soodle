@@ -6,9 +6,7 @@
 	export let quiz: Quiz;
 	export let currentGuess: Char[] = [];
 
-	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - quiz.guesses.length, 0)).fill(
-		undefined
-	);
+	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - quiz.guesses.length, 0)).fill(undefined);
 </script>
 
 <div>

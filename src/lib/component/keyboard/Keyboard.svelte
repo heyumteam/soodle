@@ -7,40 +7,31 @@
 		ENTER_STRING,
 		DELETE_STRING
 	} from './chars';
-	import { currentGuess, currentQuiz } from '$lib/store/game';
+	import type { Char, CharStatus } from '$lib/type';
 
+	export let knownChars: { [char in Char]?: CharStatus };
+	export let addChar: (char: Char) => void;
 	export let onEnter: () => void;
+	export let onDelete: () => void;
 </script>
 
 <div class="keyboard">
 	<div class="row">
 		{#each FIRST_ROW_CHARS as char}
-			<Key
-				{char}
-				charStatus={$currentQuiz.knownChars[char]}
-				onClick={() => currentGuess.addChar(char)}
-			/>
+			<Key {char} charStatus={knownChars[char]} onClick={() => addChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
 		{#each SECOND_ROW_CHARS as char}
-			<Key
-				{char}
-				charStatus={$currentQuiz.knownChars[char]}
-				onClick={() => currentGuess.addChar(char)}
-			/>
+			<Key {char} charStatus={knownChars[char]} onClick={() => addChar(char)} />
 		{/each}
 	</div>
 	<div class="row">
 		<Key char={ENTER_STRING} onClick={onEnter} />
 		{#each THIRD_ROW_CHARS as char}
-			<Key
-				{char}
-				charStatus={$currentQuiz.knownChars[char]}
-				onClick={() => currentGuess.addChar(char)}
-			/>
+			<Key {char} charStatus={knownChars[char]} onClick={() => addChar(char)} />
 		{/each}
-		<Key char={DELETE_STRING} onClick={currentGuess.removeChar} />
+		<Key char={DELETE_STRING} onClick={onDelete} />
 	</div>
 </div>
 

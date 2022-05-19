@@ -5,24 +5,11 @@
 	import ArrowButton from '$lib/component/ArrowButton.svelte';
 	import { browser } from '$app/env';
 	import { onDestroy, onMount } from 'svelte';
-	import { toast } from '$lib/store/toast';
-	import { currentGuess, currentQuiz, game } from '$lib/store/game';
+	import { game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
-	import { isInWordList } from '$lib/secret/word';
 	import { loadGame, saveGame } from '$lib/storage/local';
 
 	const submit = () => {
-		// if current guess is too short
-		if ($currentGuess.length < $currentQuiz.wordLength) {
-			toast.send('단어가 너무 짧아요');
-			return;
-		}
-		// if current guess is not in word dictionary
-		if (!isInWordList($currentGuess)) {
-			toast.send('사전에 없는 단어에요');
-			return;
-		}
-		// make guess
 		game.makeGuess();
 		// store result
 		saveGame();
@@ -71,13 +58,18 @@
 		{#each $game.quizzes as quiz (quiz.id)}
 			{#if quiz.id === $game.currentQuizIndex}
 				<div id="capture">
-					<Grid {quiz} currentGuess={quiz.currentGuess}/>
+					<Grid {quiz} currentGuess={quiz.currentGuess} />
 				</div>
 			{/if}
 		{/each}
 		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
 	</div>
-	<Keyboard onEnter={submit} />
+	<Keyboard
+		knownChars={$game.quizzes[$game.currentQuizIndex].knownChars}
+		addChar={game.addChar}
+		onEnter={submit}
+		onDelete={game.removeChar}
+	/>
 </section>
 
 <style>

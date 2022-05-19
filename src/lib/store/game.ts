@@ -1,33 +1,26 @@
-import type {
-	Char,
-	CharStatus,
-	Game,
-	GameStore,
-	Guess,
-	GuessStore,
-	Quiz,
-	QuizStore
-} from '$lib/type';
-import { derived, writable } from 'svelte/store';
+import type { Char, CharStatus, Game, Guess, Quiz } from '$lib/type';
+import { writable } from 'svelte/store';
 import { getTodaysAnswers } from '$lib/secret/dictionary';
 import { tryGuess } from '$lib/secret/dictionary';
-
-const createQuiz = (id: number, answer: string): Quiz => {
-	const wordLength = answer.length;
-	const guesses: Guess[] = [];
-	const currentGuess: Char[] = [];
-	const knownChars: { [char in Char]?: CharStatus } = {};
-	return {
-		id,
-		answer,
-		wordLength,
-		guesses,
-		currentGuess,
-		knownChars
-	};
-};
+import { isInWordList } from '$lib/secret/word';
+import { toast } from '$lib/store/toast';
 
 const createGameStore = () => {
+	const createQuiz = (id: number, answer: string): Quiz => {
+		const wordLength = answer.length;
+		const guesses: Guess[] = [];
+		const currentGuess: Char[] = [];
+		const knownChars: { [char in Char]?: CharStatus } = {};
+		return {
+			id,
+			answer,
+			wordLength,
+			guesses,
+			currentGuess,
+			knownChars
+		};
+	};
+
 	const createGame = () => {
 		const answers = getTodaysAnswers();
 		const quizzes = answers.map((answer, i) => createQuiz(i, answer));
@@ -95,15 +88,26 @@ const createGameStore = () => {
 
 	const makeGuess = () => {
 		update((game) => {
-			// make guess
 			const currentQuizIndex = game.currentQuizIndex;
+			const currentQuiz = game.quizzes[currentQuizIndex];
+			const currentGuess = currentQuiz.currentGuess;
+			// if current guess is too short
+			if (currentGuess.length < currentQuiz.wordLength) {
+				toast.send('단어가 너무 짧아요');
+				return game;
+			}
+			// if current guess is not in word dictionary
+			if (!isInWordList(currentGuess)) {
+				toast.send('사전에 없는 단어에요');
+				return game;
+			}
+			// make guess
 			const currentSolution = game.quizzes[currentQuizIndex].answer;
-			const guess = game.quizzes[currentQuizIndex].currentGuess;
-			const statuses = tryGuess(guess, currentSolution);
-			game.quizzes[currentQuizIndex].guesses.push({ guess, statuses });
+			const statuses = tryGuess(currentGuess, currentSolution);
+			game.quizzes[currentQuizIndex].guesses.push({ guess: currentGuess, statuses });
 			game.quizzes[currentQuizIndex].currentGuess = [];
 			// update known chars
-			guess.forEach((char, i) => {
+			currentGuess.forEach((char, i) => {
 				const status = statuses[i];
 				const knownStatus = game.quizzes[currentQuizIndex].knownChars[char];
 				if (knownStatus === undefined || (knownStatus === 'exist' && status === 'correct')) {
@@ -130,42 +134,4 @@ const createGameStore = () => {
 	};
 };
 
-export const game: GameStore = createGameStore();
-
-const createCurrentQuizStore = () => {
-	const { subscribe } = derived<GameStore, Quiz>(game, (game, set) => {
-		const index = game.currentQuizIndex;
-		const quiz = game.quizzes[index];
-		set(quiz);
-	});
-
-	const addChar = game.addChar;
-	const removeChar = game.removeChar;
-	const makeGuess = game.makeGuess;
-
-	return {
-		subscribe,
-		addChar,
-		removeChar,
-		makeGuess
-	};
-};
-
-export const currentQuiz: QuizStore = createCurrentQuizStore();
-
-const createCurrentGuessStore = () => {
-	const { subscribe } = derived<QuizStore, Char[]>(currentQuiz, (quiz, set) => {
-		set(quiz.currentGuess);
-	});
-
-	const addChar = currentQuiz.addChar;
-	const removeChar = currentQuiz.removeChar;
-
-	return {
-		subscribe,
-		addChar,
-		removeChar
-	};
-};
-
-export const currentGuess: GuessStore = createCurrentGuessStore();
+export const game = createGameStore();
