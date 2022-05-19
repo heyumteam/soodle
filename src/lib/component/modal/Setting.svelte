@@ -73,7 +73,7 @@
 	}
 
 	div.danger {
-		background-color: rgb(250, 44, 44);
+		background-color: rgb(255, 89, 89);
 	}
 
 	div.button.normal {
