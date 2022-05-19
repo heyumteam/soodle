@@ -69,5 +69,6 @@
 		border: 0;
 		background-color: transparent;
 		font-size: x-large;
+		cursor: pointer;
 	}
 </style>
