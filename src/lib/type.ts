@@ -42,6 +42,7 @@ export type Quiz = {
 	wordLength: number;
 	guesses: Guess[];
 	currentGuess: Char[];
+	knownAnsers: (Char | undefined)[];
 	knownChars: { [char in Char]?: CharStatus };
 };
 

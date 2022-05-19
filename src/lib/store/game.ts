@@ -10,6 +10,7 @@ const createGameStore = () => {
 		const wordLength = answer.length;
 		const guesses: Guess[] = [];
 		const currentGuess: Char[] = [];
+		const knownAnsers: (Char | undefined)[] = new Array(wordLength).fill(undefined);
 		const knownChars: { [char in Char]?: CharStatus } = {};
 		return {
 			id,
@@ -17,6 +18,7 @@ const createGameStore = () => {
 			wordLength,
 			guesses,
 			currentGuess,
+			knownAnsers,
 			knownChars
 		};
 	};
@@ -109,6 +111,9 @@ const createGameStore = () => {
 			// update known chars
 			currentGuess.forEach((char, i) => {
 				const status = statuses[i];
+				if (status === 'correct') {
+					game.quizzes[currentQuizIndex].knownAnsers[i] = char;
+				}
 				const knownStatus = game.quizzes[currentQuizIndex].knownChars[char];
 				if (knownStatus === undefined || (knownStatus === 'exist' && status === 'correct')) {
 					game.quizzes[currentQuizIndex].knownChars[char] = status;
