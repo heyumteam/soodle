@@ -54,7 +54,7 @@
 
 	div.modal {
 		background-color: white;
-		border-radius: 5%;
+		border-radius: 1em;
 		flex-direction: column;
 		min-width: 25em;
 		padding: 0.5em;
