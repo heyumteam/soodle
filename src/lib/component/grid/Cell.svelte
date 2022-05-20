@@ -8,6 +8,9 @@
 	export let char: Char | undefined = undefined;
 	export let status: CharStatus | undefined = undefined;
 
+	export let isInCorrectRow: boolean = false;
+	export let popDelay: number = 0;
+
 	const transparentMode = transparentModeOption.option;
 </script>
 
@@ -20,7 +23,10 @@
 	class:exist={status === 'exist'}
 	class:correct={status === 'correct'}
 	class:transparent-mode={$transparentMode}
-	style="--duration: {animationDuration}s; --delay: {animationDelay}s;"
+	class:not-in-correct-row={!isInCorrectRow}
+	class:in-correct-row={isInCorrectRow}
+	style="--duration: {animationDuration}s; --delay: {animationDelay}s; --pop-delay: {popDelay +
+		animationDelay}s;"
 >
 	{char ?? ''}
 </div>
@@ -50,8 +56,17 @@
 	div.checked {
 		color: var(--checked-text-color);
 		border: 0.1em solid transparent;
+	}
+
+	div.checked.not-in-correct-row {
 		animation: reveal var(--duration) linear var(--delay);
 		animation-fill-mode: backwards;
+	}
+
+	div.checked.in-correct-row {
+		animation: reveal var(--duration) linear var(--delay),
+			pop var(--duration) linear var(--pop-delay);
+		animation-fill-mode: backwards, none;
 	}
 
 	div.absent {
@@ -85,6 +100,16 @@
 		}
 		100% {
 			transform: rotateX(0deg);
+		}
+	}
+
+	@keyframes pop {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-1em);
 		}
 	}
 </style>
