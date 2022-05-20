@@ -23,7 +23,7 @@
 	div.text {
 		display: flex;
 		justify-content: center;
-        color: var(--text-color);
+		color: var(--text-color);
 		font-size: x-large;
 		margin: 0.2em 0.1em;
 		height: 1.4em;
