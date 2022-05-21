@@ -7,7 +7,9 @@
 	export let quiz: Quiz;
 	export let currentGuess: Char[] = [];
 
-	$: emptyRows = new Array(Math.max(MAX_TRIAL - 1 - quiz.guesses.length, 0)).fill(undefined);
+	$: emptyRows = new Array(Math.max(MAX_TRIAL - quiz.guesses.length, 0))
+		.fill(currentGuess, 0, 1)
+		.fill([], 1);
 </script>
 
 <div>
@@ -15,9 +17,8 @@
 	{#each quiz.guesses as guess}
 		<Row wordLength={quiz.wordLength} guess={guess.guess} charStatuses={guess.statuses} />
 	{/each}
-	<Row wordLength={quiz.wordLength} guess={currentGuess} />
-	{#each emptyRows as _}
-		<Row wordLength={quiz.wordLength} />
+	{#each emptyRows as row}
+		<Row wordLength={quiz.wordLength} guess={row} />
 	{/each}
 </div>
 
