@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Settings from 'carbon-icons-svelte/lib/Settings.svelte';
 	import Modal from './Modal.svelte';
-	import html2canvas from 'html2canvas';
 	import { createModalIsOpenStorage } from '$lib/store/modal';
 	import { resetStorage } from '$lib/storage/local';
 	import { toast } from '$lib/store/toast';
@@ -11,25 +10,6 @@
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
 
 	const transparentMode = transparentModeOption.option;
-
-	const captureGrid = (e: MouseEvent) => {
-		// remove animations
-		document
-			.querySelectorAll('.not-in-correct-row')
-			.forEach((n) => n.classList.remove('not-in-correct-row'));
-		document
-			.querySelectorAll('.in-correct-row')
-			.forEach((n) => n.classList.remove('in-correct-row'));
-		// capture
-		const elt = document.querySelector('#capture');
-		html2canvas(elt as HTMLElement).then((canvas) => {
-			canvas.toBlob((blob) => {
-				const item = new ClipboardItem({ 'image/png': blob as Blob });
-				navigator.clipboard.write([item]);
-			});
-		});
-		toast.send('사진이 복사 되었어요');
-	};
 
 	const resetStorageFunction = (e: MouseEvent) => {
 		resetStorage();
@@ -51,10 +31,6 @@
 			>
 				<div class="toggle" />
 			</div>
-		</div>
-		<div class="entry">
-			<div>공유</div>
-			<div class="button normal" on:click={captureGrid}>사진 복사</div>
 		</div>
 		<div class="entry">
 			<div>기록 삭제</div>
@@ -87,10 +63,6 @@
 
 	div.danger {
 		background-color: var(--danger-button-color);
-	}
-
-	div.button.normal {
-		background-color: var(--normal-button-color);
 	}
 
 	div.slider {

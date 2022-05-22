@@ -1,20 +1,24 @@
 <script lang="ts">
 	import type { Readable } from 'svelte/store';
-	import { spring } from 'svelte/motion';
 
+	export let isClickable: boolean = true;
+	export let isScalable: boolean | undefined = undefined;
 	export let isOpen: Readable<boolean>;
 	export let toggleOn: () => void;
 	export let toggleOff: () => void;
 
-	const scale = spring(1);
+	const onClick = (e: MouseEvent) => {
+		if (isClickable) {
+			toggleOn();
+		}
+	};
 </script>
 
 <button
 	class="modal-button"
-	on:click={(e) => toggleOn()}
-	on:mouseenter={(e) => scale.set(1.2)}
-	on:mouseleave={(e) => scale.set(1)}
-	style="transform: scale({$scale});"
+	class:scaler={isScalable ?? true}
+	class:clickable={isClickable}
+	on:click={onClick}
 >
 	<slot name="icon" />
 </button>
@@ -37,6 +41,9 @@
 		margin: 0 0.5em;
 		border: 0;
 		z-index: 10;
+	}
+
+	button.clickable {
 		cursor: pointer;
 	}
 
@@ -70,5 +77,14 @@
 		background-color: transparent;
 		font-size: x-large;
 		cursor: pointer;
+	}
+
+	button.scaler {
+		transition: all 0.2s ease-in-out;
+		transform: scale(1);
+	}
+
+	button.scaler:hover {
+		transform: scale(1.3);
 	}
 </style>

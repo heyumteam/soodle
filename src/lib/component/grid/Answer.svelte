@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type { Char } from '$lib/type';
 	import { transparentModeOption } from '$lib/store/config';
-
+	import Result from '$lib/component/modal/Result.svelte';
 	export let id: number;
 	export let knownAnswer: (Char | undefined)[];
+
+	export let showResult: boolean = false;
 
 	const transparentMode = transparentModeOption.option;
 </script>
@@ -13,6 +15,7 @@
 	{#each knownAnswer as char}
 		<div class="text sheet" class:transparent-mode={$transparentMode}>{char ?? ''}</div>
 	{/each}
+	<Result {showResult} />
 </div>
 
 <style>
