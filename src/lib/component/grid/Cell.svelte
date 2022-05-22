@@ -22,7 +22,6 @@
 	class:absent={status === 'absent'}
 	class:exist={status === 'exist'}
 	class:correct={status === 'correct'}
-	class:transparent-mode={$transparentMode}
 	class:not-in-correct-row={!isInCorrectRow}
 	class:in-correct-row={isInCorrectRow}
 	style="--duration: {animationDuration}s; 
@@ -82,10 +81,6 @@
 
 	div.correct {
 		background-color: var(--correct-color);
-	}
-
-	div.transparent-mode {
-		color: transparent;
 	}
 
 	@keyframes reveal {
