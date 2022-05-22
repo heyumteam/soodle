@@ -2,7 +2,7 @@ import type { Char, CharStatus, Game, Guess, Quiz } from '$lib/type';
 import { writable } from 'svelte/store';
 import { getTodaysAnswers } from '$lib/secret/dictionary';
 import { tryGuess } from '$lib/secret/dictionary';
-import { isInWordList } from '$lib/secret/word';
+import { isInVocabList } from '$lib/secret/vocab';
 import { toast } from '$lib/store/toast';
 import { MAX_TRIAL } from '$lib/config';
 
@@ -105,7 +105,7 @@ const createGameStore = () => {
 					return game;
 				}
 				// if current guess is not in word dictionary
-				if (!isInWordList(currentGuess)) {
+				if (!isInVocabList(currentGuess)) {
 					toast.send('사전에 없는 단어에요');
 					return game;
 				}
