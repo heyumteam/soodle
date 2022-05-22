@@ -13,7 +13,17 @@
 	const transparentMode = transparentModeOption.option;
 
 	const captureGrid = (e: MouseEvent) => {
-		html2canvas(document.querySelector('#capture') as HTMLElement).then((canvas) => {
+		// remove animations
+		document
+			.querySelectorAll('.not-in-correct-row')
+			.forEach((n) => n.classList.remove('not-in-correct-row'));
+		document
+			.querySelectorAll('.in-correct-row')
+			.forEach((n) => n.classList.remove('in-correct-row'));
+		// capture
+		console.log(document.querySelectorAll('.in-correct-row').length);
+		const elt = document.querySelector('#capture');
+		html2canvas(elt as HTMLElement).then((canvas) => {
 			canvas.toBlob((blob) => {
 				const item = new ClipboardItem({ 'image/png': blob as Blob });
 				navigator.clipboard.write([item]);
