@@ -21,7 +21,6 @@
 			.querySelectorAll('.in-correct-row')
 			.forEach((n) => n.classList.remove('in-correct-row'));
 		// capture
-		console.log(document.querySelectorAll('.in-correct-row').length);
 		const elt = document.querySelector('#capture');
 		html2canvas(elt as HTMLElement).then((canvas) => {
 			canvas.toBlob((blob) => {
