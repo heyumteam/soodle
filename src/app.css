@@ -12,6 +12,8 @@
 	--correct-color: rgb(73, 163, 38);
 	--danger-button-color: rgb(255, 89, 89);
 	--normal-button-color: rgb(137, 255, 126);
+	--logo-size: xx-large;
+	--logo-weight: 900;
 }
 
 body {

@@ -2,6 +2,7 @@
 	import Info from '$lib/component/modal/Info.svelte';
 	import Setting from '$lib/component/modal/Setting.svelte';
 	import Stats from '$lib/component/modal/Stats.svelte';
+	import Dday from '$lib/component/widget/dday.svelte';
 
 	let rainbowLogo = false;
 	const toggleRainbowLogo = () => {
@@ -11,9 +12,12 @@
 
 <header>
 	<div class="header">
-		<button class="logo" class:rainbow={rainbowLogo} on:click={(e) => toggleRainbowLogo()}>
-			수들
-		</button>
+		<div class="header-right">
+			<div class="logo" class:rainbow={rainbowLogo} on:click={(e) => toggleRainbowLogo()}>수들</div>
+			<div class="widget-container">
+				<Dday />
+			</div>
+		</div>
 		<div class="modals">
 			<Info />
 			<Stats />
@@ -36,16 +40,26 @@
 		padding: 1em 2em;
 	}
 
-	button.logo {
+	div.header-right {
+		display: flex;
+		align-items: center;
+	}
+
+	div.logo {
 		background-color: transparent;
 		border: 0;
 		color: black;
-		font-size: xx-large;
-		font-weight: 900;
+		font-size: var(--logo-size);
+		font-weight: var(--logo-weight);
+		cursor: default;
 	}
 
-	button.rainbow {
+	div.rainbow {
 		animation: rainbow 1s infinite;
+	}
+
+	div.widget-container {
+		margin-left: 1em;
 	}
 
 	@keyframes rainbow {
