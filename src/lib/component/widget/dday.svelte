@@ -13,6 +13,6 @@
 <style>
 	div.widget {
 		font-size: x-large;
-		font-weight: var(--logo-weight);
+		font-weight: var(--bold-weight);
 	}
 </style>
