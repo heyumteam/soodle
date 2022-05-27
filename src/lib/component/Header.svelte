@@ -19,9 +19,15 @@
 			</div>
 		</div>
 		<div class="modals">
-			<Info />
-			<Stats />
-			<Setting />
+			<div class="modal-container">
+				<Info />
+			</div>
+			<div class="modal-container">
+				<Stats />
+			</div>
+			<div class="modal-container">
+				<Setting />
+			</div>
 		</div>
 	</div>
 </header>
@@ -60,6 +66,14 @@
 
 	div.widget-container {
 		margin-left: 1em;
+	}
+
+	div.modals {
+		display: flex;
+	}
+
+	div.modal-container {
+		margin: 0 0.5em;
 	}
 
 	@keyframes rainbow {
