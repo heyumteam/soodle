@@ -16,7 +16,7 @@
 		<div class="text sheet" class:transparent-mode={$transparentMode}>{char ?? ''}</div>
 	{/each}
 	<div class="modal-container">
-		<Result {showResult} />
+		<Result {showResult} answer={showResult ? knownAnswer.join('').toLowerCase() : undefined} />
 	</div>
 </div>
 

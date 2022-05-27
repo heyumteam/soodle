@@ -7,6 +7,7 @@
 	import { toast } from '$lib/store/toast';
 
 	export let showResult: boolean = false;
+	export let answer: string | undefined = undefined;
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
 
@@ -36,6 +37,9 @@
 	<Modal {isOpen} {toggleOn} {toggleOff} isClickable={showResult} isScalable={false}>
 		<Report slot="icon" size={32} />
 		<div slot="content" class="infobox">
+			<div class="answer">
+				{answer ?? ''}
+			</div>
 			<div class="entry">
 				<div>사진 모드</div>
 				<div
@@ -58,6 +62,14 @@
 	div.infobox {
 		width: 22em;
 		margin: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+
+	div.answer {
+		font-size: xx-large;
 	}
 
 	div.entry {
@@ -66,6 +78,7 @@
 		justify-content: space-between;
 		font-size: large;
 		margin: 0.2em 1em;
+		width: 100%;
 	}
 
 	div.slider {
