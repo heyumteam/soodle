@@ -13,20 +13,14 @@ export const getTodaysAnswers = () => {
 	const randomNumberGenerator = mulberry32(seed);
 
 	const keys: string[] = [];
-	const candidates = Object.keys(DICTIONARY);
 	while (keys.length < NUM_WORDS) {
-		const index = Math.floor(randomNumberGenerator() * candidates.length);
-		const key = candidates[index];
+		const index = Math.floor(randomNumberGenerator() * DICTIONARY.length);
+		const key = DICTIONARY[index];
 		if (!keys.includes(key)) {
 			keys.push(key);
 		}
 	}
 	return keys;
-};
-
-export const getDescription = (word: string) => {
-	const description = DICTIONARY[word as keyof typeof DICTIONARY];
-	return description;
 };
 
 export const tryGuess = (chars: Char[], solution: string): CharStatus[] => {
