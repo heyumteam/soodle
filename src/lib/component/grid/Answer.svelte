@@ -15,12 +15,15 @@
 	{#each knownAnswer as char}
 		<div class="text sheet" class:transparent-mode={$transparentMode}>{char ?? ''}</div>
 	{/each}
-	<Result {showResult} />
+	<div class="modal-container">
+		<Result {showResult} />
+	</div>
 </div>
 
 <style>
 	div.container {
 		display: flex;
+		align-items: center;
 	}
 
 	div.text {
@@ -39,5 +42,10 @@
 
 	div.transparent-mode {
 		color: transparent;
+	}
+
+	div.modal-container {
+		display: flex;
+		align-items: center;
 	}
 </style>
