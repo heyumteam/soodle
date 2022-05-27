@@ -114,21 +114,23 @@ const createGameStore = () => {
 				const statuses = tryGuess(currentGuess, currentSolution);
 				game.quizzes[currentQuizIndex].guesses.push({ guess: currentGuess, statuses });
 				game.quizzes[currentQuizIndex].currentGuess = [];
+				// is quiz end
+				game.quizzes[currentQuizIndex].isEnd =
+					game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL ||
+					statuses.every((status) => status === 'correct');
 				// update known chars
 				currentGuess.forEach((char, i) => {
 					const status = statuses[i];
-					if (status === 'correct') {
-						game.quizzes[currentQuizIndex].knownAnsers[i] = char;
+					if (status === 'correct' || game.quizzes[currentQuizIndex].isEnd) {
+						game.quizzes[currentQuizIndex].knownAnsers[i] = game.quizzes[currentQuizIndex].answer[
+							i
+						].toUpperCase() as Char;
 					}
 					const knownStatus = game.quizzes[currentQuizIndex].knownChars[char];
 					if (knownStatus === undefined || (knownStatus === 'exist' && status === 'correct')) {
 						game.quizzes[currentQuizIndex].knownChars[char] = status;
 					}
 				});
-				// is quiz end
-				game.quizzes[currentQuizIndex].isEnd =
-					game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL ||
-					statuses.every((status) => status === 'correct');
 			}
 			return game;
 		});
