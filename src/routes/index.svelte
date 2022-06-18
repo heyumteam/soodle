@@ -78,7 +78,7 @@
 		flex-direction: column;
 		align-items: center;
 		flex-grow: 1;
-		min-width: fit-content
+		min-width: fit-content;
 	}
 
 	div.grid-section {
