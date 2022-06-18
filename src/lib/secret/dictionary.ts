@@ -24,12 +24,21 @@ export const getTodaysAnswers = () => {
 };
 
 export const tryGuess = (chars: Char[], solution: string): CharStatus[] => {
-	solution = solution.toUpperCase();
+	const answer: string[] = new Array<string>(chars.length);
+	for(let i = 0; i < chars.length; i++)
+		answer[i] = solution.toUpperCase()[i]
 	const willReturn: CharStatus[] = new Array<CharStatus>(chars.length);
-	for(const i in chars){
-		if(solution.includes(chars[i])) willReturn[i] = 'exist';
-		else willReturn[i] = 'absent';
-		if(solution[i] == chars[i]) willReturn[i] = 'correct';
-	}
-	return willReturn; 
+	
+	willReturn.fill('absent');
+	for(let l = 0; l < chars.length; l++)
+		if(answer[l] == chars[l]){
+			willReturn[l] = 'correct';
+			answer[l] = '_';
+		}
+	
+	for(let l = 0; l < chars.length; l++)
+		if(willReturn[l] != 'correct' && answer.includes(chars[l]))
+			willReturn[l] = 'exist';
+	
+	return willReturn;
 };
