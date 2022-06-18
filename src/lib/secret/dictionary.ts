@@ -25,20 +25,23 @@ export const getTodaysAnswers = () => {
 
 export const tryGuess = (chars: Char[], solution: string): CharStatus[] => {
 	const answer: string[] = new Array<string>(chars.length);
-	for(let i = 0; i < chars.length; i++)
-		answer[i] = solution.toUpperCase()[i]
+	for (let i = 0; i < chars.length; i++) {
+		answer[i] = solution.toUpperCase()[i];
+	}
+
 	const willReturn: CharStatus[] = new Array<CharStatus>(chars.length);
-	
 	willReturn.fill('absent');
-	for(let l = 0; l < chars.length; l++)
-		if(answer[l] == chars[l]){
+
+	for (let l = 0; l < chars.length; l++)
+		if (answer[l] == chars[l]) {
 			willReturn[l] = 'correct';
 			answer[l] = '_';
 		}
-	
-	for(let l = 0; l < chars.length; l++)
-		if(willReturn[l] != 'correct' && answer.includes(chars[l]))
+
+	for (let l = 0; l < chars.length; l++) {
+		if (willReturn[l] != 'correct' && answer.includes(chars[l])) {
 			willReturn[l] = 'exist';
-	
+		}
+	}
 	return willReturn;
 };
