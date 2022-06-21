@@ -60,6 +60,7 @@ export type Stats = {
 	visitStroke: number;
 	totalVisits: number;
 	guessDistribution: number[];
+	todayPlayed: boolean[];
 };
 
 // toast

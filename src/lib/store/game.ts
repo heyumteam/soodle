@@ -115,15 +115,14 @@ const createGameStore = () => {
 				const statuses = tryGuess(currentGuess, currentSolution);
 				game.quizzes[currentQuizIndex].guesses.push({ guess: currentGuess, statuses });
 				game.quizzes[currentQuizIndex].currentGuess = [];
-				stats.markSubmitted();
+				stats.markSubmitted(currentQuizIndex);
 				// is quiz end
-				game.quizzes[currentQuizIndex].isEnd =
-					game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL ||
-					statuses.every((status) => status === 'correct');
-				stats.markGameDone(
-					game.quizzes[currentQuizIndex].isEnd,
-					game.quizzes[currentQuizIndex].guesses.length
-				);
+				const allCorrect = statuses.every((status) => status === 'correct');
+				const isEnd = game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL || allCorrect;
+				game.quizzes[currentQuizIndex].isEnd = isEnd;
+				if (isEnd) {
+					stats.markGameDone(allCorrect, game.quizzes[currentQuizIndex].guesses.length);
+				}
 				// update known chars
 				currentGuess.forEach((char, i) => {
 					const status = statuses[i];
