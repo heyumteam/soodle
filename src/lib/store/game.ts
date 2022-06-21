@@ -5,6 +5,7 @@ import { tryGuess } from '$lib/secret/dictionary';
 import { isInVocabList } from '$lib/secret/vocab';
 import { toast } from '$lib/store/toast';
 import { MAX_TRIAL } from '$lib/config';
+import { stats } from '$lib/store/stats';
 
 const createGameStore = () => {
 	const createQuiz = (id: number, answer: string): Quiz => {
@@ -114,10 +115,15 @@ const createGameStore = () => {
 				const statuses = tryGuess(currentGuess, currentSolution);
 				game.quizzes[currentQuizIndex].guesses.push({ guess: currentGuess, statuses });
 				game.quizzes[currentQuizIndex].currentGuess = [];
+				stats.markSubmitted();
 				// is quiz end
 				game.quizzes[currentQuizIndex].isEnd =
 					game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL ||
 					statuses.every((status) => status === 'correct');
+				stats.markGameDone(
+					game.quizzes[currentQuizIndex].isEnd,
+					game.quizzes[currentQuizIndex].guesses.length
+				);
 				// update known chars
 				currentGuess.forEach((char, i) => {
 					const status = statuses[i];
