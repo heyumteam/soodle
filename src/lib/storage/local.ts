@@ -6,6 +6,7 @@ import { getTodayString } from '$lib/util/date';
 import { get } from 'svelte/store';
 
 export const saveGame = () => {
+	// save game
 	const gameObject = get(game);
 	const quizzes = gameObject.quizzes.map((quiz) => {
 		return { guesses: quiz.guesses.map((guess) => guess.guess) };
@@ -15,10 +16,14 @@ export const saveGame = () => {
 		quizzes
 	};
 	localStorage.setItem(GAME_KEY, JSON.stringify(gameJson));
+
+	// save statistics
+	const statsObject = get(stats);
+	localStorage.setItem(STATS_KEY, JSON.stringify(statsObject));
 };
 
 export const loadGame = () => {
-	// load
+	// load statatistics
 	const statsString = localStorage.getItem(STATS_KEY);
 	if (statsString) {
 		const loadedStats = JSON.parse(statsString);
