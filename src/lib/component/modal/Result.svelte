@@ -67,7 +67,6 @@
 		align-items: center;
 	}
 
-
 	div.answer {
 		font-size: xx-large;
 	}
