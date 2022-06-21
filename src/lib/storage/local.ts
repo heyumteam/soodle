@@ -50,4 +50,5 @@ export const loadGame = () => {
 
 export const resetStorage = () => {
 	localStorage.removeItem(GAME_KEY);
+	localStorage.removeItem(STATS_KEY);
 };

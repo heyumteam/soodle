@@ -5,6 +5,7 @@
 	import { resetStorage } from '$lib/storage/local';
 	import { toast } from '$lib/store/toast';
 	import { game } from '$lib/store/game';
+	import { stats } from "$lib/store/stats"
 	import { transparentModeOption } from '$lib/store/config';
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
@@ -16,6 +17,7 @@
 		toggleOff();
 		toast.send('기록이 삭제되었어요');
 		game.reset();
+		stats.reset();
 	};
 </script>
 

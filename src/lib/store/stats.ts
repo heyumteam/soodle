@@ -4,7 +4,7 @@ import { getTodayString } from '$lib/util/date';
 import { writable } from 'svelte/store';
 
 const createStatsStore = () => {
-	const { subscribe, update } = writable<Stats>({
+	const createNewStats = () => ({
 		lastSubmitted: undefined,
 		played: 0,
 		winCount: 0,
@@ -12,6 +12,8 @@ const createStatsStore = () => {
 		totalVisits: 0,
 		guessDistribution: new Array(MAX_TRIAL).fill(0)
 	});
+
+	const { subscribe, update } = writable<Stats>(createNewStats());
 
 	const load = (stats: Stats) => {
 		update(() => stats);
@@ -34,17 +36,22 @@ const createStatsStore = () => {
 			stats.played += 1;
 			if (won) {
 				stats.winCount += 1;
-				stats.guessDistribution[attempts] += 1;
+				stats.guessDistribution[attempts - 1] += 1;
 			}
 			return stats;
 		});
 	};
 
+	const reset = () => {
+		update(() => createNewStats());
+	}
+
 	return {
 		subscribe,
 		load,
 		markSubmitted,
-		markGameDone
+		markGameDone,
+		reset
 	};
 };
 
