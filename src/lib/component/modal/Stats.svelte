@@ -3,8 +3,11 @@
 	import Modal from './Modal.svelte';
 	import { createModalIsOpenStorage } from '$lib/store/modal';
 	import { stats } from '$lib/store/stats';
+	import { get } from 'svelte/store';
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
+
+	$: maxCount = Math.max.apply(null, get(stats).guessDistribution);
 </script>
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
@@ -29,7 +32,11 @@
 		<div class="distribution">
 			<div>분포</div>
 			{#each $stats.guessDistribution as count, trail}
-				<div>{trail + 1}: {count}</div>
+				<div class="axis">
+					<div>{trail + 1}</div>
+					<div class="bar" style="width: {count > 0 ? (count / maxCount) * 16 : 0}em;" />
+					<div>{count}</div>
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -52,5 +59,17 @@
 
 	div.distribution {
 		margin: 0.3em 2em;
+	}
+
+	div.axis {
+		display: flex;
+		align-items: center;
+	}
+
+	div.bar {
+		background-color: grey;
+		min-width: 0.1em;
+		height: 0.8em;
+		margin: 0em 0.2em 0em 0.5em;
 	}
 </style>
