@@ -14,3 +14,7 @@ export const FLIP_ANIMATION_DELAY_PER_CELL = 0.2;
 
 // d-day
 export const TARGET_DAY = '2022-11-17T00:00:00';
+
+// storage keys
+export const GAME_KEY = 'soodle-game';
+export const STATS_KEY = 'soodle-stats';

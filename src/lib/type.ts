@@ -52,6 +52,16 @@ export type Game = {
 	currentQuizIndex: number;
 };
 
+// statistics
+export type Stats = {
+	lastSubmitted: string | undefined;
+	played: number;
+	winCount: number;
+	visitStroke: number;
+	totalVisits: number;
+	guessDistribution: number[];
+};
+
 // toast
 export type Toast = {
 	id: string;

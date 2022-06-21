@@ -1,9 +1,9 @@
-import type { StoredGame } from '$lib/type';
+import type { StoredGame, Stats } from '$lib/type';
+import { GAME_KEY, STATS_KEY } from '$lib/config';
 import { game } from '$lib/store/game';
+import { stats } from '$lib/store/stats';
 import { getTodayString } from '$lib/util/date';
 import { get } from 'svelte/store';
-
-const gameKey = 'game';
 
 export const saveGame = () => {
 	const gameObject = get(game);
@@ -14,11 +14,19 @@ export const saveGame = () => {
 		day: getTodayString(),
 		quizzes
 	};
-	localStorage.setItem(gameKey, JSON.stringify(gameJson));
+	localStorage.setItem(GAME_KEY, JSON.stringify(gameJson));
 };
 
 export const loadGame = () => {
-	const gameJson = localStorage.getItem(gameKey);
+	// load
+	const statsString = localStorage.getItem(STATS_KEY);
+	if (statsString) {
+		const loadedStats = JSON.parse(statsString);
+		stats.load(loadedStats as Stats);
+	}
+
+	// load game
+	const gameJson = localStorage.getItem(GAME_KEY);
 	// if no stored result
 	if (!gameJson) {
 		return;
@@ -41,5 +49,5 @@ export const loadGame = () => {
 };
 
 export const resetStorage = () => {
-	localStorage.removeItem(gameKey);
+	localStorage.removeItem(GAME_KEY);
 };
