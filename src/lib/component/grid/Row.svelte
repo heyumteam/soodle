@@ -5,7 +5,7 @@
 
 	export let wordLength: number;
 	export let guess: Char[] = [];
-	export let charStatuses: CharStatus[] = [];
+	export let charStatuses: (CharStatus | undefined)[] = [];
 
 	$: emptyTiles = new Array(Math.max(wordLength - guess.length, 0)).fill(undefined);
 	$: popDelay = wordLength * FLIP_ANIMATION_DELAY_PER_CELL;
