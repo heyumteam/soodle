@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Report from 'carbon-icons-svelte/lib/Report.svelte';
+	import Search from 'carbon-icons-svelte/lib/Search.svelte';
 	import Modal from './Modal.svelte';
 	import html2canvas from 'html2canvas';
 	import { createModalIsOpenStorage } from '$lib/store/modal';
@@ -39,6 +40,9 @@
 		<div slot="content" class="infobox">
 			<div class="answer">
 				{answer ?? ''}
+				<a href="https://en.dict.naver.com/#/search?query={answer}">
+					<Search size={24} />
+				</a>
 			</div>
 			<div class="entry">
 				<div>사진 모드</div>
@@ -113,5 +117,9 @@
 
 	div.button.normal {
 		background-color: var(--normal-button-color);
+	}
+
+	a {
+		color: black;
 	}
 </style>
