@@ -71,4 +71,4 @@ export const stats = createStatsStore();
 
 export const maxDistributionCount = derived(stats, ($stats) => {
 	return Math.max.apply(null, $stats.guessDistribution);
-})
+});

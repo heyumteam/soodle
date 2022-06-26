@@ -31,7 +31,10 @@
 			{#each $stats.guessDistribution as count, trail}
 				<div class="axis">
 					<div>{trail + 1}</div>
-					<div class="bar" style="width: {count > 0 ? (count / $maxDistributionCount) * 16 : 0}em;" />
+					<div
+						class="bar"
+						style="width: {count > 0 ? (count / $maxDistributionCount) * 16 : 0}em;"
+					/>
 					<div>{count}</div>
 				</div>
 			{/each}
