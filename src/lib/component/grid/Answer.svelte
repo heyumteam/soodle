@@ -5,7 +5,7 @@
 	export let id: number;
 	export let knownAnswer: (Char | undefined)[];
 
-	export let showResult: boolean = false;
+	export let showResult = false;
 
 	const transparentMode = transparentModeOption.option;
 </script>

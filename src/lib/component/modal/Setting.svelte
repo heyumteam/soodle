@@ -12,7 +12,7 @@
 
 	const transparentMode = transparentModeOption.option;
 
-	const resetStorageFunction = (e: MouseEvent) => {
+	const resetStorageFunction = () => {
 		resetStorage();
 		toggleOff();
 		toast.send('기록이 삭제되었어요');

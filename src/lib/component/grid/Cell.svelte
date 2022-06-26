@@ -8,8 +8,8 @@
 	export let char: Char | undefined = undefined;
 	export let status: CharStatus | undefined = undefined;
 
-	export let isInCorrectRow: boolean = false;
-	export let popDelay: number = 0;
+	export let isInCorrectRow = false;
+	export let popDelay = 0;
 
 	const transparentMode = transparentModeOption.option;
 </script>

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { Readable } from 'svelte/store';
 
-	export let isClickable: boolean = true;
+	export let isClickable = true;
 	export let isScalable: boolean | undefined = undefined;
 	export let isOpen: Readable<boolean>;
 	export let toggleOn: () => void;
 	export let toggleOff: () => void;
 
-	const onClick = (e: MouseEvent) => {
+	const onClick = () => {
 		if (isClickable) {
 			toggleOn();
 		}
@@ -27,7 +27,7 @@
 	<div class="modal-container">
 		<div class="modal">
 			<div class="close-button-container">
-				<button class="close-button" on:click={(e) => toggleOff()}>&times;</button>
+				<button class="close-button" on:click={() => toggleOff()}>&times;</button>
 			</div>
 			<slot name="content" />
 		</div>

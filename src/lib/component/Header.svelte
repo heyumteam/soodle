@@ -13,7 +13,7 @@
 <header>
 	<div class="header">
 		<div class="header-right">
-			<div class="logo" class:rainbow={rainbowLogo} on:click={(e) => toggleRainbowLogo()}>수들</div>
+			<div class="logo" class:rainbow={rainbowLogo} on:click={() => toggleRainbowLogo()}>수들</div>
 			<div class="widget-container">
 				<Dday />
 			</div>

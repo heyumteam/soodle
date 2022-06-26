@@ -7,14 +7,14 @@
 	import { transparentModeOption } from '$lib/store/config';
 	import { toast } from '$lib/store/toast';
 
-	export let showResult: boolean = false;
+	export let showResult = false;
 	export let answer: string | undefined = undefined;
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
 
 	const transparentMode = transparentModeOption.option;
 
-	const captureGrid = (e: MouseEvent) => {
+	const captureGrid = () => {
 		// remove animations
 		document
 			.querySelectorAll('.not-in-correct-row')
@@ -26,7 +26,7 @@
 		const elt = document.querySelector('#capture');
 		html2canvas(elt as HTMLElement).then((canvas) => {
 			canvas.toBlob((blob) => {
-				const item = new ClipboardItem({ 'image/png': blob as Blob });
+				const item = new window.ClipboardItem({ 'image/png': blob as Blob });
 				navigator.clipboard.write([item]);
 			});
 		});

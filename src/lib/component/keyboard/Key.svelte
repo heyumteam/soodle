@@ -8,7 +8,7 @@
 
 <button
 	class="key"
-	on:click={(e) => onClick()}
+	on:click={() => onClick()}
 	class:unknown={charStatus === undefined}
 	class:absent={charStatus === 'absent'}
 	class:exist={charStatus === 'exist'}
