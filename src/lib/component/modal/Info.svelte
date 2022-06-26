@@ -14,8 +14,8 @@
 		<div class="header">수들</div>
 		<div class="content">
 			수들은 수능생 여러분들의 영어 단어 공부를 조금이나마 재밌게 하고자 만들어졌습니다. 수들은
-		<a href="https://www.nytimes.com/games/wordle/index.html">WORDLE</a>에 영감을
-			받아서 제작되었습니다.
+			<a href="https://www.nytimes.com/games/wordle/index.html">WORDLE</a>에 영감을 받아서
+			제작되었습니다.
 		</div>
 		<div class="split-bar" />
 		<div class="content">
@@ -40,9 +40,7 @@
 			<Cell char={'L'} />
 			<Cell char={'E'} />
 		</div>
-		<div class="content">
-			노란색으로 칠해진 셀은 정답에 존재하지만 위치는 틀린 문자입니다.
-		</div>
+		<div class="content">노란색으로 칠해진 셀은 정답에 존재하지만 위치는 틀린 문자입니다.</div>
 		<div class="row">
 			<Cell char={'S'} />
 			<Cell char={'O'} />
@@ -51,9 +49,7 @@
 			<Cell char={'L'} status={'absent'} />
 			<Cell char={'E'} />
 		</div>
-		<div class="content">
-			회색 칠해진 셀은 정답에 존재하지 않는 문자입니다.
-		</div>
+		<div class="content">회색 칠해진 셀은 정답에 존재하지 않는 문자입니다.</div>
 		<div class="content">
 			<b>{MAX_TRIAL}번</b> 안에 정답을 맞추세요!
 		</div>
