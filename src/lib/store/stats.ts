@@ -1,7 +1,7 @@
 import type { Stats } from '$lib/type';
 import { MAX_TRIAL, NUM_WORDS } from '$lib/config';
 import { getTodayString } from '$lib/util/date';
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 const createStatsStore = () => {
 	const createNewStats = () => {
@@ -68,3 +68,7 @@ const createStatsStore = () => {
 };
 
 export const stats = createStatsStore();
+
+export const maxDistributionCount = derived(stats, ($stats) => {
+	return Math.max.apply(null, $stats.guessDistribution);
+})

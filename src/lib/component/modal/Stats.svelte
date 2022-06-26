@@ -2,12 +2,9 @@
 	import SkillLevel from 'carbon-icons-svelte/lib/SkillLevel.svelte';
 	import Modal from './Modal.svelte';
 	import { createModalIsOpenStorage } from '$lib/store/modal';
-	import { stats } from '$lib/store/stats';
-	import { get } from 'svelte/store';
+	import { maxDistributionCount, stats } from '$lib/store/stats';
 
 	const { isOpen, toggleOn, toggleOff } = createModalIsOpenStorage();
-
-	$: maxCount = Math.max.apply(null, get(stats).guessDistribution);
 </script>
 
 <Modal {isOpen} {toggleOn} {toggleOff}>
@@ -34,7 +31,7 @@
 			{#each $stats.guessDistribution as count, trail}
 				<div class="axis">
 					<div>{trail + 1}</div>
-					<div class="bar" style="width: {count > 0 ? (count / maxCount) * 16 : 0}em;" />
+					<div class="bar" style="width: {count > 0 ? (count / $maxDistributionCount) * 16 : 0}em;" />
 					<div>{count}</div>
 				</div>
 			{/each}
