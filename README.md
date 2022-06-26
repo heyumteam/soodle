@@ -8,6 +8,7 @@
 수들은 [여기](https://soodle.pages.dev)에서 플레이 할 수 있습니다.
 
 ## 기여
+
 새로운 아이디어는 언제나 환영입니다.
 [Issues](https://github.com/heyumteam/soodle/issues)에 남겨주시면 긍정적으로 검토하겠습니다.
 
