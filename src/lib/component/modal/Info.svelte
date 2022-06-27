@@ -11,7 +11,7 @@
 <Modal {isOpen} {toggleOn} {toggleOff}>
 	<Information slot="icon" size={32} />
 	<div slot="content" class="infobox">
-		<div class="header">수들</div>
+		<div class="header">수들, Soodle</div>
 		<div class="content">
 			수들은 수능생 여러분들의 영어 단어 공부를 조금이나마 재밌게 하고자 만들어졌습니다. 수들은
 			<a href="https://www.nytimes.com/games/wordle/index.html">WORDLE</a>에 영감을 받아서
