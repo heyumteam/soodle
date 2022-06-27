@@ -6,7 +6,7 @@ export const getTodaysAnswers = () => {
 	const today = new Date().getTime();
 	const start_date = new Date(START_DATE).getTime();
 	const offset = Math.floor((today - start_date) / 86400000);
-	const keys = DICTIONARY.slice(0, NUM_WORDS);
+	const keys = DICTIONARY.slice(offset * NUM_WORDS, (offset + 1) * NUM_WORDS);
 	return keys;
 };
 
