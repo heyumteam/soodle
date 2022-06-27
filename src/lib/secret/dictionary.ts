@@ -1,25 +1,12 @@
 import type { Char, CharStatus } from '$lib/type';
 import DICTIONARY from './dictionary.json';
-import { getTodayString } from '$lib/util/date';
-import { mulberry32 } from '$lib/util/random';
-import { NUM_WORDS } from '$lib/config';
+import { NUM_WORDS, START_DATE } from '$lib/config';
 
 export const getTodaysAnswers = () => {
-	const today = getTodayString();
-	const seed = today
-		.split('')
-		.map((char) => char.charCodeAt(0))
-		.reduce((sum, val) => sum + val);
-	const randomNumberGenerator = mulberry32(seed);
-
-	const keys: string[] = [];
-	while (keys.length < NUM_WORDS) {
-		const index = Math.floor(randomNumberGenerator() * DICTIONARY.length);
-		const key = DICTIONARY[index];
-		if (!keys.includes(key)) {
-			keys.push(key);
-		}
-	}
+	const today = new Date().getTime();
+	const start_date = new Date(START_DATE).getTime();
+	const offset = Math.floor((today - start_date) / 86400000);
+	const keys = DICTIONARY.slice(0, NUM_WORDS);
 	return keys;
 };
 

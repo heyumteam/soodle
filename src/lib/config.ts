@@ -2,8 +2,9 @@
 export const GITHUB_ADDRESS = 'github.com/heyumteam/soodle';
 
 // game settings
+export const START_DATE = '2022-06-28T00:00:00';
 export const MAX_TRIAL = 6;
-export const NUM_WORDS = 2;
+export const NUM_WORDS = 5;
 
 // environment settings
 export const TOAST_TIMEOUT = 2000;
