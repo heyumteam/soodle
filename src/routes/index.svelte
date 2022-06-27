@@ -36,9 +36,13 @@
 		}
 	};
 
+	let isGameCreated = false;
 	onMount(() => {
 		loadGame();
 		window.addEventListener('keydown', onKeyDown);
+		setTimeout(() => {
+			isGameCreated = true;
+		}, 10);
 	});
 
 	onDestroy(() => {
@@ -53,23 +57,25 @@
 </svelte:head>
 
 <section>
-	<div class="grid-section">
-		<ArrowButton char={'◀'} onclick={game.prevQuiz} />
-		{#each $game.quizzes as quiz (quiz.id)}
-			{#if quiz.id === $game.currentQuizIndex}
-				<div id="capture">
-					<Grid {quiz} currentGuess={quiz.currentGuess} />
-				</div>
-			{/if}
-		{/each}
-		<ArrowButton char={'▶'} onclick={game.nextQuiz} />
-	</div>
-	<Keyboard
-		knownChars={$game.quizzes[$game.currentQuizIndex].knownChars}
-		addChar={game.addChar}
-		onEnter={submit}
-		onDelete={game.removeChar}
-	/>
+	{#if isGameCreated}
+		<div class="grid-section">
+			<ArrowButton char={'◀'} onclick={game.prevQuiz} />
+			{#each $game.quizzes as quiz (quiz.id)}
+				{#if quiz.id === $game.currentQuizIndex}
+					<div id="capture">
+						<Grid {quiz} currentGuess={quiz.currentGuess} />
+					</div>
+				{/if}
+			{/each}
+			<ArrowButton char={'▶'} onclick={game.nextQuiz} />
+		</div>
+		<Keyboard
+			knownChars={$game.quizzes[$game.currentQuizIndex].knownChars}
+			addChar={game.addChar}
+			onEnter={submit}
+			onDelete={game.removeChar}
+		/>
+	{/if}
 </section>
 
 <style>
