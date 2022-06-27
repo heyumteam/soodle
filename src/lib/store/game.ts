@@ -121,7 +121,11 @@ const createGameStore = () => {
 				const isEnd = game.quizzes[currentQuizIndex].guesses.length >= MAX_TRIAL || allCorrect;
 				game.quizzes[currentQuizIndex].isEnd = isEnd;
 				if (isEnd) {
-					stats.markGameDone(allCorrect, game.quizzes[currentQuizIndex].guesses.length);
+					stats.markGameDone(
+						currentQuizIndex,
+						allCorrect,
+						game.quizzes[currentQuizIndex].guesses.length
+					);
 				}
 				// update known chars
 				currentGuess.forEach((char, i) => {

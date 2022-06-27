@@ -12,7 +12,8 @@ const createStatsStore = () => {
 			visitStroke: 0,
 			totalVisits: 0,
 			guessDistribution: new Array(MAX_TRIAL).fill(0),
-			todayPlayed: new Array(NUM_WORDS).fill(false)
+			todayPlayed: new Array(NUM_WORDS).fill(false),
+			todayFinished: new Array(NUM_WORDS).fill(false)
 		};
 	};
 
@@ -23,6 +24,7 @@ const createStatsStore = () => {
 			const today = getTodayString();
 			if (stats.lastSubmitted !== today) {
 				stats.todayPlayed = new Array(NUM_WORDS).fill(false);
+				stats.todayFinished = new Array(NUM_WORDS).fill(false);
 			}
 			return stats;
 		});
@@ -44,11 +46,14 @@ const createStatsStore = () => {
 		});
 	};
 
-	const markGameDone = (won: boolean, attempts: number) => {
+	const markGameDone = (index: number, won: boolean, attempts: number) => {
 		update((stats) => {
-			if (won) {
-				stats.winCount += 1;
-				stats.guessDistribution[attempts - 1] += 1;
+			if (!stats.todayFinished[index]) {
+				stats.todayFinished[index] = true;
+				if (won) {
+					stats.winCount += 1;
+					stats.guessDistribution[attempts - 1] += 1;
+				}
 			}
 			return stats;
 		});

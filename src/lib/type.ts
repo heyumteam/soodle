@@ -61,6 +61,7 @@ export type Stats = {
 	totalVisits: number;
 	guessDistribution: number[];
 	todayPlayed: boolean[];
+	todayFinished: boolean[];
 };
 
 // toast
