@@ -13,7 +13,7 @@
 </script>
 
 <div>
-	<Answer id={quiz.id + 1} knownAnswer={quiz.knownAnsers} showResult={quiz.isEnd} />
+	<Answer id={quiz.id + 1} knownAnswer={quiz.knownAnswers} showResult={quiz.isEnd} />
 	{#each quiz.guesses as guess}
 		<Row wordLength={quiz.wordLength} guess={guess.guess} charStatuses={guess.statuses} />
 	{/each}

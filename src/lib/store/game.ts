@@ -13,7 +13,7 @@ const createGameStore = () => {
 		const wordLength = answer.length;
 		const guesses: Guess[] = [];
 		const currentGuess: Char[] = [];
-		const knownAnsers: (Char | undefined)[] = new Array(wordLength).fill(undefined);
+		const knownAnswers: (Char | undefined)[] = new Array(wordLength).fill(undefined);
 		const knownChars: { [char in Char]?: CharStatus } = {};
 		return {
 			id,
@@ -22,7 +22,7 @@ const createGameStore = () => {
 			wordLength,
 			guesses,
 			currentGuess,
-			knownAnsers,
+			knownAnswers,
 			knownChars
 		};
 	};
@@ -131,7 +131,7 @@ const createGameStore = () => {
 				currentGuess.forEach((char, i) => {
 					const status = statuses[i];
 					if (status === 'correct' || game.quizzes[currentQuizIndex].isEnd) {
-						game.quizzes[currentQuizIndex].knownAnsers[i] = game.quizzes[currentQuizIndex].answer[
+						game.quizzes[currentQuizIndex].knownAnswers[i] = game.quizzes[currentQuizIndex].answer[
 							i
 						].toUpperCase() as Char;
 					}
