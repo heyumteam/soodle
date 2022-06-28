@@ -25,6 +25,12 @@ const createStatsStore = () => {
 			if (stats.lastSubmitted !== today) {
 				stats.todayPlayed = new Array(NUM_WORDS).fill(false);
 				stats.todayFinished = new Array(NUM_WORDS).fill(false);
+				if (
+					stats.lastSubmitted !== undefined &&
+					new Date().getTime() - new Date(stats.lastSubmitted).getTime() / 86400000 > 1
+				) {
+					stats.visitStroke = 0;
+				}
 			}
 			return stats;
 		});
