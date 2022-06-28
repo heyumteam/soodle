@@ -3,8 +3,8 @@
 	import Grid from '$lib/component/grid/Grid.svelte';
 	import Keyboard from '$lib/component/keyboard/Keyboard.svelte';
 	import ArrowButton from '$lib/component/ArrowButton.svelte';
-	import ChevronLeft from "carbon-icons-svelte/lib/ChevronLeft.svelte";
-	import ChevronRight from "carbon-icons-svelte/lib/ChevronRight.svelte";
+	import ChevronLeft from 'carbon-icons-svelte/lib/ChevronLeft.svelte';
+	import ChevronRight from 'carbon-icons-svelte/lib/ChevronRight.svelte';
 	import { browser } from '$app/env';
 	import { onDestroy, onMount } from 'svelte';
 	import { game } from '$lib/store/game';
