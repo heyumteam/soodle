@@ -50,7 +50,7 @@
 		}
 		setTimeout(() => {
 			isGameCreated = true;
-		}, 10);
+		}, 5);
 	});
 
 	onDestroy(() => {
