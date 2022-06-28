@@ -10,6 +10,9 @@
 	import { game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
 	import { loadGame, saveGame } from '$lib/storage/local';
+	import { stats } from '$lib/store/stats';
+	import { get } from 'svelte/store';
+	import { toast } from '$lib/store/toast';
 
 	const submit = () => {
 		game.makeGuess();
@@ -42,6 +45,9 @@
 	onMount(() => {
 		loadGame();
 		window.addEventListener('keydown', onKeyDown);
+		if (get(stats).lastSubmitted === undefined) {
+			toast.send('수들에 오신 것을 환영합니다!');
+		}
 		setTimeout(() => {
 			isGameCreated = true;
 		}, 10);
