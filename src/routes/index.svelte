@@ -48,9 +48,7 @@
 		if (get(stats).lastSubmitted === undefined) {
 			toast.send('수들에 오신 것을 환영합니다!');
 		}
-		setTimeout(() => {
-			isGameCreated = true;
-		}, 5);
+		isGameCreated = true;
 	});
 
 	onDestroy(() => {
