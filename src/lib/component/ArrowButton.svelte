@@ -1,10 +1,9 @@
 <script lang="ts">
-	export let char: string;
 	export let onclick: () => void;
 </script>
 
 <button on:click={onclick}>
-	{char}
+	<slot name="display" />
 </button>
 
 <style>

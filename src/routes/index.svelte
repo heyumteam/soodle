@@ -3,11 +3,16 @@
 	import Grid from '$lib/component/grid/Grid.svelte';
 	import Keyboard from '$lib/component/keyboard/Keyboard.svelte';
 	import ArrowButton from '$lib/component/ArrowButton.svelte';
+	import ChevronLeft from 'carbon-icons-svelte/lib/ChevronLeft.svelte';
+	import ChevronRight from 'carbon-icons-svelte/lib/ChevronRight.svelte';
 	import { browser } from '$app/env';
 	import { onDestroy, onMount } from 'svelte';
 	import { game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
 	import { loadGame, saveGame } from '$lib/storage/local';
+	import { stats } from '$lib/store/stats';
+	import { get } from 'svelte/store';
+	import { toast } from '$lib/store/toast';
 
 	const submit = () => {
 		game.makeGuess();
@@ -40,9 +45,10 @@
 	onMount(() => {
 		loadGame();
 		window.addEventListener('keydown', onKeyDown);
-		setTimeout(() => {
-			isGameCreated = true;
-		}, 10);
+		if (get(stats).lastSubmitted === undefined) {
+			toast.send('수들에 오신 것을 환영합니다!');
+		}
+		isGameCreated = true;
 	});
 
 	onDestroy(() => {
@@ -59,7 +65,9 @@
 <section>
 	{#if isGameCreated}
 		<div class="grid-section">
-			<ArrowButton char={'◀'} onclick={game.prevQuiz} />
+			<ArrowButton onclick={game.prevQuiz}>
+				<ChevronLeft slot="display" size={32} />
+			</ArrowButton>
 			{#each $game.quizzes as quiz (quiz.id)}
 				{#if quiz.id === $game.currentQuizIndex}
 					<div id="capture">
@@ -67,7 +75,9 @@
 					</div>
 				{/if}
 			{/each}
-			<ArrowButton char={'▶'} onclick={game.nextQuiz} />
+			<ArrowButton onclick={game.nextQuiz}>
+				<ChevronRight slot="display" size={32} />
+			</ArrowButton>
 		</div>
 		<Keyboard
 			knownChars={$game.quizzes[$game.currentQuizIndex].knownChars}

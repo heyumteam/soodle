@@ -5,19 +5,18 @@
 	import Toast from '$lib/component/Toast.svelte';
 </script>
 
-<Header />
-
 <main>
+	<Header />
 	<Toast />
 	<slot />
+	<Footer />
 </main>
-
-<Footer />
 
 <style>
 	main {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
+		min-width: fit-content;
 	}
 </style>

@@ -27,11 +27,11 @@
 		{/each}
 	</div>
 	<div class="row">
-		<Key char={ENTER_STRING} onClick={onEnter} />
+		<Key char={DELETE_STRING} onClick={onDelete} />
 		{#each THIRD_ROW_CHARS as char}
 			<Key {char} charStatus={knownChars[char]} onClick={() => addChar(char)} />
 		{/each}
-		<Key char={DELETE_STRING} onClick={onDelete} />
+		<Key char={ENTER_STRING} onClick={onEnter} />
 	</div>
 </div>
 
