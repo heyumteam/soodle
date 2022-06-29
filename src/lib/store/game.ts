@@ -136,7 +136,7 @@ const createGameStore = () => {
 						].toUpperCase() as Char;
 					}
 					const knownStatus = game.quizzes[currentQuizIndex].knownChars[char];
-					if (knownStatus === undefined || (knownStatus === 'exist' && status === 'correct')) {
+					if (knownStatus === undefined || knownStatus === 'absent' || status === 'correct') {
 						game.quizzes[currentQuizIndex].knownChars[char] = status;
 					}
 				});
