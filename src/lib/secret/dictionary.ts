@@ -27,8 +27,13 @@ export const tryGuess = (chars: Char[], solution: string): CharStatus[] => {
 	}
 
 	for (let l = 0; l < chars.length; l++) {
-		if (willReturn[l] != 'correct' && answer.includes(chars[l])) {
+		if (willReturn[l] === 'correct') {
+			continue;
+		}
+		const i = answer.indexOf(chars[l]);
+		if (i >= 0) {
 			willReturn[l] = 'exist';
+			answer[i] = '_';
 		}
 	}
 	return willReturn;
