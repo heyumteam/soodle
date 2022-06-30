@@ -18,7 +18,7 @@
 
 ### 요구사항
 
-수들은 [Node.js](https://nodejs.org)로 개발되었습니다.
+수들은 [Node.js](https://nodejs.org)와 [Svelte](https://svelte.dev)로 개발되었습니다.
 [VSCode](https://code.visualstudio.com)와 [Docker](https://www.docker.com/)를 이용하면 수들 개발자들이 제공하는 [Devcontainer](https://code.visualstudio.com/docs/remote/containers)를 활용할 수 있습니다.
 
 ### 개발
