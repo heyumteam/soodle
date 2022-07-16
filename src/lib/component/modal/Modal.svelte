@@ -43,6 +43,7 @@
 		margin: 0;
 		border: 0;
 		z-index: 10;
+		color: black;
 	}
 
 	button.clickable {
@@ -79,6 +80,7 @@
 		background-color: transparent;
 		font-size: x-large;
 		cursor: pointer;
+		color: black;
 	}
 
 	button.scaler {

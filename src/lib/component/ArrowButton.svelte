@@ -13,6 +13,7 @@
 		height: 20em;
 		border: 0;
 		cursor: pointer;
+		color: black;
 	}
 
 	button:hover {
