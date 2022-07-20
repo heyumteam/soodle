@@ -27,7 +27,9 @@ const createStatsStore = () => {
 				stats.todayFinished = new Array(NUM_WORDS).fill(false);
 				if (
 					stats.lastSubmitted !== undefined &&
-					(new Date(getTodayString()).getTime() - new Date(stats.lastSubmitted).getTime()) / 86400000 > 1
+					(new Date(getTodayString()).getTime() - new Date(stats.lastSubmitted).getTime()) /
+						86400000 >
+						1
 				) {
 					stats.visitStroke = 0;
 				}
