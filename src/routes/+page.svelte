@@ -5,7 +5,7 @@
 	import ArrowButton from '$lib/component/ArrowButton.svelte';
 	import ChevronLeft from 'carbon-icons-svelte/lib/ChevronLeft.svelte';
 	import ChevronRight from 'carbon-icons-svelte/lib/ChevronRight.svelte';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { onDestroy, onMount } from 'svelte';
 	import { game } from '$lib/store/game';
 	import { masterIsModalOpen, toggleOpenedModalOff } from '$lib/store/modal';
